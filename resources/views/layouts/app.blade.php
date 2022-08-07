@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @vite('resources/sass/app.scss')
 
     <!-- Custom styles for this Page-->
     @yield('custom_styles')
@@ -116,8 +116,7 @@
     </div>
     </div>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('js/app.js') }}"></script>
+    @vite('resources/js/app.js')
 
     <!-- Page level custom scripts -->
     @yield('custom_scripts')
