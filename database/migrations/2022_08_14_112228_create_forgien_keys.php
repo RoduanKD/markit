@@ -39,11 +39,11 @@ return new class extends Migration
 						->onDelete('no action')
 						->onUpdate('no action');
 		});
-		Schema::table('delivery_tasks', function(Blueprint $table) {
-			$table->foreign('order_id')->references('id')->on('orders')
-						->onDelete('no action')
-						->onUpdate('no action');
-		});
+		// Schema::table('delivery_tasks', function(Blueprint $table) {
+		// 	$table->foreign('order_id')->references('id')->on('orders')
+		// 				->onDelete('no action')
+		// 				->onUpdate('no action');
+		// });
 		Schema::table('comments', function(Blueprint $table) {
 			$table->foreign('author_id')->references('id')->on('users')
 						->onDelete('no action')

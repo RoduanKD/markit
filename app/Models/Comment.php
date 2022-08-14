@@ -7,19 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-
-    protected $table = 'comments';
-    public $timestamps = true;
-
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['author_id','content','commentable_type','commentable_id',];
-
-
-
-
-
 
     public function author()
     {
@@ -30,5 +21,4 @@ class Comment extends Model
     {
         return $this->morphTo();
     }
-
 }

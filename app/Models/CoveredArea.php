@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class CoveredArea extends Model
 {
-
-    protected $table = 'covered_areas';
-    public $timestamps = false;
+    protected $primaryKey = null;
     protected $fillable = ['employee_id','area_id'];
-
-
+    public $incrementing = false;
+    public $timestamps = false;
 
     public function area()
     {
@@ -22,5 +20,4 @@ class CoveredArea extends Model
     {
         return $this->belongsTo(User::class, 'employee_id');
     }
-
 }

@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
 			$table->json('name');
+			$table->bigInteger('country_id')->unsigned();
 			$table->timestamps();
 			$table->softDeletes();
-			$table->bigInteger('country_id')->unsigned();
         });
     }
 

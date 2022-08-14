@@ -8,23 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Area extends Model
 {
-
-    protected $table = 'areas';
-    public $timestamps = true;
-
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['city_id','name'];
 
-
-
-
     public function city()
     {
         return $this->belongsTo(City::class);
     }
-
 
     public function addresses()
     {
@@ -35,6 +27,4 @@ class Area extends Model
     {
         return $this->hasMany(CoveredArea::class);
     }
-
-
 }

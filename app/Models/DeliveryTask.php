@@ -7,20 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DeliveryTask extends Model
 {
-
-    protected $table = 'delivery_tasks';
-    public $timestamps = true;
-
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['employee_id','order_id','eta'];
-
-
-
-
-
-
 
     public function employee()
     {
@@ -32,4 +22,8 @@ class DeliveryTask extends Model
         return $this->belongsTo(order::class);
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

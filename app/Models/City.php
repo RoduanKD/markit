@@ -9,19 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class City extends Model
 {
     use HasFactory;
-
-
-
-    protected $table = 'cities';
-    public $timestamps = true;
-
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['country_id','name'];
-
-
-
 
     public function country()
     {
@@ -32,5 +23,4 @@ class City extends Model
     {
         return $this->hasMany(Area::class);
     }
-
 }

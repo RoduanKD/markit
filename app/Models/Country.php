@@ -7,15 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Country extends Model
 {
-
-    protected $table = 'countries';
-    public $timestamps = true;
-
     use SoftDeletes;
+
     protected $fillable = ['name'];
-
     protected $dates = ['deleted_at'];
-
 
     public function cities()
     {
