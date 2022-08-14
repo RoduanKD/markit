@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('areas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
 			$table->json('name');
 			$table->bigInteger('city_id')->unsigned();
 			$table->timestamps();

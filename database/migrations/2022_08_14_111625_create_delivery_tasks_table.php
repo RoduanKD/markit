@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('delivery_tasks', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
 			$table->bigInteger('employee_id')->unsigned();
 			$table->bigInteger('order_id')->unsigned();
 			$table->integer('eta')->unsigned();

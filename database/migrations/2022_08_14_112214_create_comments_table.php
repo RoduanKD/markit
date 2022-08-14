@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->bigInteger('author_id')->unsigned();
 			$table->text('content');
 			$table->bigInteger('commentable_id')->unsigned();

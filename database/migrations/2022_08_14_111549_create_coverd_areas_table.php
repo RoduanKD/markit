@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coverd_areas', function (Blueprint $table) {
+        Schema::create('covered_areas', function (Blueprint $table) {
             $table->bigInteger('area_id')->unsigned();
 			$table->bigInteger('employee_id')->unsigned();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coverd_areas');
+        Schema::dropIfExists('covered_areas');
     }
 };
