@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Translatable\HasTranslations;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, SoftDeletes;
+    use HasFactory, InteractsWithMedia, SoftDeletes, HasTranslations;
 
     protected $fillable =
     [
@@ -23,6 +24,8 @@ class Product extends Model implements HasMedia
         'area_id',
         'owner_id',
     ];
+
+    public $translatable = ['name','description'];
 
     public function category()
     {
