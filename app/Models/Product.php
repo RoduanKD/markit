@@ -9,7 +9,17 @@ class Product extends Model
 {
     use HasFactory,InteractsWithMedia,SoftDeletes;
 
-    protected $fillable = ['name', 'description', 'price', 'quantity'];
+    protected $fillable =
+    [
+        'name',
+        'description',
+        'price',
+        'quantity',
+        'category_id',
+        'currency_id',
+        'area_id',
+        'owner_id'
+    ];
 
     public function Category()
     {
