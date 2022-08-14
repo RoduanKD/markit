@@ -21,22 +21,22 @@ class Product extends Model
         'owner_id'
     ];
 
-    public function Category()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function Currency()
+    public function currency()
     {
         return $this->belongsTo(Currency::class);
     }
 
-    public function Area()
+    public function area()
     {
         return $this->belongsTo(Area::class);
     }
 
-    public function Owner()
+    public function owner()
     {
         return $this->belongsTo(Owner::class);
     }
@@ -45,7 +45,7 @@ class Product extends Model
     // {
     //     return $this->belongsToMany(Invoice::class);
     // }
-    public function Orders()
+    public function orders()
     {
         return $this->belongsToMany(Order::class);
     }
