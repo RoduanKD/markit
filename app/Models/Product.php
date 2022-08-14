@@ -9,22 +9,28 @@ class Product extends Model
 {
     use HasFactory,InteractsWithMedia,SoftDeletes;
 
+    protected $fillable = ['name', 'description', 'price', 'quantity'];
+
     public function Category()
     {
         return $this->belongsTo(Category::class);
     }
+
     public function Currency()
     {
         return $this->belongsTo(Currency::class);
     }
+
     public function Area()
     {
         return $this->belongsTo(Area::class);
     }
+
     public function Owner()
     {
         return $this->belongsTo(Owner::class);
     }
+
     // public function Invoices()
     // {
     //     return $this->belongsToMany(Invoice::class);
