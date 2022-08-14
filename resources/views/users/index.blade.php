@@ -25,8 +25,10 @@
                                 <th>{{ __('LastName') }}</th>
                                 <th>{{ __('Email Address') }}</th>
                                 <th>{{ __('PhoneNumber') }}</th>
-                                <th>{{ __('Saller/Buier') }}</th>
-                                <th>{{ __('Product he saled/bought') }}</th>
+                                <th>{{ __('Gender') }}</th>
+                                <th>{{ __('BirthDate') }}</th>
+                                {{-- <th>{{ __('Saller/Buier') }}</th> --}}
+                                {{-- <th>{{ __('Product he saled/bought') }}</th> --}}
                                 <th>{{ __('Created at') }}</th>
                                 <th>{{ __('Updated in') }}</th>
                             </tr>
@@ -34,8 +36,12 @@
                         <tbody>
                         @foreach($users as $user)
                             <tr>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->firstname }}</td>
+                                <td>{{ $user->lastname }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->is_male }}</td>
+                                <td>{{ $user->birthdate }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at->diffForhumans() }}</td>
                             </tr>

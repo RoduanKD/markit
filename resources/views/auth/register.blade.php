@@ -9,16 +9,16 @@
 
             <div class="mb-3">
                 <label class="form-label">{{ __('First_Name') }}</label>
-                <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="{{ __('First_Name') }}">
-                @error('first_name')
+                <input type="text" name="firstname" class="form-control @error('firstname') is-invalid @enderror" placeholder="{{ __('FirstName') }}">
+                @error('firstname')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Last_Name') }}</label>
-                <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="{{ __('Last_Name') }}">
-                @error('last_name')
+                <input type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" placeholder="{{ __('LastName') }}">
+                @error('lastname')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
@@ -48,21 +48,38 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">{{ __('Gender') }}</label>
-                <input type="checkbox" name="gender" value="Male" class="form-control @error('gender') is-invalid @enderror">
-                <input type="checkbox" name="gender" value="Female" class="form-control @error('gender') is-invalid @enderror">
+                <label class="form-label">{{ __('Gender :') }}</label>
+                <input type="radio" name="gender" value="1" class="form-check-input @error('gender') is-invalid @enderror">
+                <label class="form-label">{{ __('Male') }}</label>
+                <input type="radio" name="gender" value="0" class="form-check-input @error('gender') is-invalid @enderror">
+                <label class="form-label">{{ __('Female') }}</label>
                 @error('gender')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">{{ __('Your Address') }}</label>
-                <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="{{ __('address') }}">
+            {{-- <div class="form-group">
+                <label>Your Address</label>
+                <select name="area" class="form-control @error('area') is-invalid @enderror">
+                    @foreach ($areas as $area)
+                        <option value={{ $area->id }}>{{ $area->name }}</option>
+                    @endforeach
+                </select>
+                <select name="country" class="form-control @error('country') is-invalid @enderror">
+                    @foreach ($countries as $country)
+                        <option value={{ $country->id }}>{{ $country->name }}</option>
+                    @endforeach
+                </select>
+                <select name="city" class="form-control @error('city') is-invalid @enderror">
+                    @foreach ($cities as $city)
+                        <option value={{ $city->id }}>{{ $city->name }}</option>
+                    @endforeach
+                </select>
+                <input type="text" name="description" class="form-control @error('description`') is-invalid @enderror" placeholder="{{ __('address details') }}">
                 @error('address')
-                <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-            </div>
+            </div> --}}
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Password') }}</label>

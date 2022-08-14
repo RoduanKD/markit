@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function show(){
-       $customers =  User::all()->paginate(3);
-        return view('customer.show',compact('customers'));
+    public function show()
+    {
+        $customers = User::all()->paginate(3);
+
+        return view('customer.show', compact('customers'));
     }
 
-    public  function update(Request $request ,User $user){
+    public function update(Request $request, User $user)
+    {
         $validated = $request->validate([
 
         ]);
@@ -21,7 +24,5 @@ class CustomerController extends Controller
     public function delete(User $user)
     {
         $user->delete();
-
     }
-
 }
