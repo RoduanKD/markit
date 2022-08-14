@@ -21,8 +21,12 @@
                     <table class="table" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>{{ __('Name') }}</th>
+                                <th>{{ __('FirstName') }}</th>
+                                <th>{{ __('LastName') }}</th>
                                 <th>{{ __('Email Address') }}</th>
+                                <th>{{ __('PhoneNumber') }}</th>
+                                <th>{{ __('Saller/Buier') }}</th>
+                                <th>{{ __('Product he saled/bought') }}</th>
                                 <th>{{ __('Created at') }}</th>
                                 <th>{{ __('Updated in') }}</th>
                             </tr>

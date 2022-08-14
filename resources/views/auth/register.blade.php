@@ -8,12 +8,29 @@
             <h2 class="card-title text-center mb-4">{{ __('Create new account') }}</h2>
 
             <div class="mb-3">
-                <label class="form-label">{{ __('Name') }}</label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}">
-                @error('name')
+                <label class="form-label">{{ __('First_Name') }}</label>
+                <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" placeholder="{{ __('First_Name') }}">
+                @error('first_name')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
+            <div class="mb-3">
+                <label class="form-label">{{ __('Last_Name') }}</label>
+                <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" placeholder="{{ __('Last_Name') }}">
+                @error('last_name')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">{{ __('Phone_Number') }}</label>
+                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="{{ __('Phone') }}">
+                @error('phone')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">{{ __('Email address') }}</label>
                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Email Address') }}">
@@ -21,6 +38,32 @@
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
+            <div class="mb-3">
+                <label class="form-label">{{ __('BirthDate') }}</label>
+                <input type="date" name="birthdate" class="form-control @error('birthdate') is-invalid @enderror">
+                @error('birthdate')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">{{ __('Gender') }}</label>
+                <input type="checkbox" name="gender" value="Male" class="form-control @error('gender') is-invalid @enderror">
+                <input type="checkbox" name="gender" value="Female" class="form-control @error('gender') is-invalid @enderror">
+                @error('gender')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">{{ __('Your Address') }}</label>
+                <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="{{ __('address') }}">
+                @error('address')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">{{ __('Password') }}</label>
                 <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ __('Password') }}">
