@@ -12,13 +12,9 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-<<<<<<< HEAD
-        "laraveldaily/larastarters": "^1.4",
-        "willvincent/laravel-rateable": "^3.0"
-=======
         "laraveldaily/larastarters": "dev-add-vite-support-to-bootstrap-themes",
-        "spatie/laravel-medialibrary": "^10.4"
->>>>>>> 89877298676790fb9f7f3884c542ba74ada7bc29
+        "spatie/laravel-medialibrary": "^10.4",
+        "willvincent/laravel-rateable": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
