@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('author_id')->unsigned();
             $table->text('content');
-            $table->morph('commentable');
+            $table->morphs('commentable');
             $table->timestamps();
             $table->softDeletes();
         });
