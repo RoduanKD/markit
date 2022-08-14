@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('delivery_tasks', function (Blueprint $table) {
             $table->id();
-			$table->bigInteger('employee_id')->unsigned();
-			$table->bigInteger('order_id')->unsigned();
-			$table->integer('eta')->unsigned();
-			$table->softDeletes();
-			$table->timestamps();
+            $table->bigInteger('employee_id')->unsigned();
+            $table->bigInteger('order_id')->unsigned();
+            $table->integer('eta')->unsigned();
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

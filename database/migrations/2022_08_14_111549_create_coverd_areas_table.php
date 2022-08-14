@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('covered_areas', function (Blueprint $table) {
             $table->bigInteger('area_id')->unsigned();
-			$table->bigInteger('employee_id')->unsigned();
+            $table->bigInteger('employee_id')->unsigned();
         });
     }
 

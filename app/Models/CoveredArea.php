@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class CoveredArea extends Model
 {
     protected $primaryKey = null;
-    protected $fillable = ['employee_id','area_id'];
+
+    protected $fillable = ['employee_id', 'area_id'];
+
     public $incrementing = false;
+
     public $timestamps = false;
 
     public function area()

@@ -10,7 +10,8 @@ class Comment extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['author_id','content','commentable_type','commentable_id',];
+
+    protected $fillable = ['author_id', 'content', 'commentable_type', 'commentable_id'];
 
     public function author()
     {

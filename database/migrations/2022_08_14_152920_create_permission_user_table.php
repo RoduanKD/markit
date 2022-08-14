@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
-            $table->id();
-            $table->json('name');
-            $table->bigInteger('city_id')->unsigned();
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('permission_user', function (Blueprint $table) {
+            $table->foreignId('permission_id')->constrained();
+            $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('permission_user');
     }
 };
