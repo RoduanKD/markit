@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9620a5202894f95c8387a0f843e22a8",
+    "content-hash": "77b343960f9da0ab1f4bd4a8e835c00b",
     "packages": [
         {
             "name": "brick/math",
@@ -1662,16 +1662,16 @@
         },
         {
             "name": "laraveldaily/larastarters",
-            "version": "1.4.1",
+            "version": "dev-add-vite-support-to-bootstrap-themes",
             "source": {
                 "type": "git",
-                "url": "https://github.com/LaravelDaily/Larastarters.git",
-                "reference": "9dfeb5237d7a77c72cba09c9bd1afb50eb715d80"
+                "url": "https://github.com/RoduanKD/Larastarters.git",
+                "reference": "5b783cbc795c394c9fbd4ab5c580a05ca1570622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelDaily/Larastarters/zipball/9dfeb5237d7a77c72cba09c9bd1afb50eb715d80",
-                "reference": "9dfeb5237d7a77c72cba09c9bd1afb50eb715d80",
+                "url": "https://api.github.com/repos/RoduanKD/Larastarters/zipball/5b783cbc795c394c9fbd4ab5c580a05ca1570622",
+                "reference": "5b783cbc795c394c9fbd4ab5c580a05ca1570622",
                 "shasum": ""
             },
             "type": "library",
@@ -1687,7 +1687,6 @@
                     "LaravelDaily\\Larastarters\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1699,10 +1698,9 @@
             ],
             "description": "Laravel Starter Kits with extra functions",
             "support": {
-                "issues": "https://github.com/LaravelDaily/Larastarters/issues",
-                "source": "https://github.com/LaravelDaily/Larastarters/tree/1.4.1"
+                "source": "https://github.com/RoduanKD/Larastarters/tree/add-vite-support-to-bootstrap-themes"
             },
-            "time": "2022-02-23T05:58:46+00:00"
+            "time": "2022-08-13T22:24:31+00:00"
         },
         {
             "name": "league/commonmark",
@@ -8395,7 +8393,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "laraveldaily/larastarters": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
