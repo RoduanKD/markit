@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('buyer_id');
-            $table->foreignId('seller_id');
-            $table->foreignId('product_id');
+            $table->foreignId('buyer_id')->constrained('users');
+            $table->foreignId('seller_id')->constrained('users');
+            $table->foreignId('product_id')->contstrained();
             $table->integer('payment_method')->unsigned();
             $table->integer('status')->unsigned();
             $table->integer('quantity')->unsigned();

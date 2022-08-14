@@ -9,23 +9,13 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function owner()
+    public function buyer()
     {
-        return $this->belongsTo('User' , 'owner_id');
+        return $this->belongsTo(User::class, 'buyer_id');
     }
 
-    public function price()
+    public function seller()
     {
-        return $this->belongsTo(Currency::class);
-    }
-
-    public function areas()
-    {
-        return $this->belongsTo(Area::class);
-    }
-
-    public function media()
-    {
-        return $this->hasMany(Media::class);
+        return $this->belongsTo(User::class, 'seller_id');
     }
 }

@@ -96,6 +96,7 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read int|null $comments_count
  * @property-read \App\Models\User|null $employee
+ * @property-read \App\Models\Order|null $order
  * @method static \Illuminate\Database\Eloquent\Builder|DeliveryTask newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DeliveryTask newQuery()
  * @method static \Illuminate\Database\Query\Builder|DeliveryTask onlyTrashed()
@@ -104,6 +105,19 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|DeliveryTask withoutTrashed()
  */
 	class DeliveryTask extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Order
+ *
+ * @property-read \App\Models\User|null $buyer
+ * @property-read \App\Models\User|null $seller
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ */
+	class Order extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -128,6 +142,8 @@ namespace App\Models{
  * @property-read \App\Models\Area|null $area
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read int|null $orders_count
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Query\Builder|Product onlyTrashed()
