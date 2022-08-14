@@ -10,7 +10,8 @@ class DeliveryTask extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['employee_id','order_id','eta'];
+
+    protected $fillable = ['employee_id', 'order_id', 'eta'];
 
     public function employee()
     {

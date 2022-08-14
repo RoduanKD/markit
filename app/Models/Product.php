@@ -21,7 +21,7 @@ class Product extends Model implements HasMedia
         'category_id',
         'currency_id',
         'area_id',
-        'owner_id'
+        'owner_id',
     ];
 
     public function category()

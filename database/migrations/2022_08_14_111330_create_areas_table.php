@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
-			$table->json('name');
-			$table->bigInteger('city_id')->unsigned();
-			$table->timestamps();
-			$table->softDeletes();
+            $table->json('name');
+            $table->bigInteger('city_id')->unsigned();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

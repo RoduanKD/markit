@@ -11,7 +11,8 @@ class Area extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['city_id','name'];
+
+    protected $fillable = ['city_id', 'name'];
 
     public function city()
     {
