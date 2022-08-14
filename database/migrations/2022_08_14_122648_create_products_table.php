@@ -25,8 +25,8 @@ return new class extends Migration
             $table->foreignId('area_id')->constrained();
             $table->foreignId('owner_id')->constrained();
 
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
