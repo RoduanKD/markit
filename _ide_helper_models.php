@@ -12,42 +12,98 @@
 
 namespace App\Models{
 /**
- * App\Models\Product
+ * App\Models\Area
  *
- * @property int $id
- * @property mixed $name
- * @property mixed $description
- * @property int $price
- * @property int $quantity
- * @property int $currency_id
- * @property int $category_id
- * @property int $area_id
- * @property int $owner_id
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
- * @property-read int|null $media_count
- * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
- * @method static \Illuminate\Database\Query\Builder|Product onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|Product query()
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereAreaId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereCurrencyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereOwnerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|Product withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Product withoutTrashed()
+ * @property-read \App\Models\City|null $city
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CoveredArea[] $covered_areas
+ * @property-read int|null $covered_areas_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Area onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Area query()
+ * @method static \Illuminate\Database\Query\Builder|Area withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Area withoutTrashed()
  */
-	class Product extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
+	class Area extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\City
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Area[] $areas
+ * @property-read int|null $areas_count
+ * @property-read \App\Models\Country|null $country
+ * @method static \Illuminate\Database\Eloquent\Builder|City newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City newQuery()
+ * @method static \Illuminate\Database\Query\Builder|City onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|City query()
+ * @method static \Illuminate\Database\Query\Builder|City withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|City withoutTrashed()
+ */
+	class City extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Comment
+ *
+ * @property-read \App\Models\User|null $author
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Comment onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
+ * @method static \Illuminate\Database\Query\Builder|Comment withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Comment withoutTrashed()
+ */
+	class Comment extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Country
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\City[] $cities
+ * @property-read int|null $cities_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Country onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country query()
+ * @method static \Illuminate\Database\Query\Builder|Country withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Country withoutTrashed()
+ */
+	class Country extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\CoveredArea
+ *
+ * @property-read \App\Models\Area|null $area
+ * @property-read \App\Models\User|null $employee
+ * @method static \Illuminate\Database\Eloquent\Builder|CoveredArea newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CoveredArea newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CoveredArea query()
+ */
+	class CoveredArea extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\DeliveryTask
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Models\User|null $employee
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryTask newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryTask newQuery()
+ * @method static \Illuminate\Database\Query\Builder|DeliveryTask onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|DeliveryTask query()
+ * @method static \Illuminate\Database\Query\Builder|DeliveryTask withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|DeliveryTask withoutTrashed()
+ */
+	class DeliveryTask extends \Eloquent {}
 }
 
 namespace App\Models{
