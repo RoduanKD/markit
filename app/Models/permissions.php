@@ -11,6 +11,6 @@ class Permissions extends Model
     use HasFactory;
 
     public function role(){
-        return $this->HasMany(Role::class);
+        return $this->belongsToMany(Role::class);
     }
 }
