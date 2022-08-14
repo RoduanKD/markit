@@ -12,8 +12,8 @@ class Country extends Model
     public $timestamps = true;
 
     use SoftDeletes;
+    protected $fillable = ['name'];
 
-    protected $guarded = [];
     protected $dates = ['deleted_at'];
 
 

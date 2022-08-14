@@ -14,7 +14,7 @@ class DeliveryTask extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('eta');
+    protected $fillable = ['employee_id','order_id','eta'];
 
 
 
@@ -24,12 +24,12 @@ class DeliveryTask extends Model
 
     public function employee()
     {
-        return $this->belongsTo('User', 'employee_id');
+        return $this->belongsTo(User::class, 'employee_id');
     }
 
     public function order()
     {
-        return $this->belongsTo('Order');
+        return $this->belongsTo(order::class);
     }
 
 }

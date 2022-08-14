@@ -15,14 +15,14 @@ class Area extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('city_id');
-    protected $guarded = [];
+    protected $fillable = ['city_id','name'];
+
 
 
 
     public function city()
     {
-        return $this->belongsTo('City');
+        return $this->belongsTo(City::class);
     }
 
 

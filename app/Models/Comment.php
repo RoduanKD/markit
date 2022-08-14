@@ -14,8 +14,8 @@ class Comment extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('commentable_type');
-    protected $guarded = [];
+    protected $fillable = ['author_id','content','commentable_type','commentable_id',];
+
 
 
 
@@ -23,7 +23,7 @@ class Comment extends Model
 
     public function author()
     {
-        return $this->belongsTo('User', 'author_id');
+        return $this->belongsTo(User::class);
     }
 
     public function commentable()
