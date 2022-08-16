@@ -12,7 +12,7 @@ use willvincent\Rateable\Rateable;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    use Rateable;
+    // use Rateable;
 
     /**
      * The attributes that are mass assignable.
