@@ -39,14 +39,19 @@ class CountryController extends Controller
     public function store(StoreCountryRequest $request)
     {
         $name=['en' => $request->validated('name_en'),'ar' => $request->validated('name_ar')];
-        array_merge($request->validated(),['name' => $name]);
+        $country=new Country();
+        $country->setTranslation('name','en',$request->validated('name_en'))
+        ->setTranslation('name','ar',$request->validated('name_ar'));
+
+        // array_merge($request->validated(),['name' => $name]);
         // dd($name);
-        $country=Country::create($name);
+        // $country=Country::create($name);
         // $country->name=$name;
-        dd($country);
+        $country->save();
+
         session()->flash('message' , 'Added succesfuly');
         session()->flash('message-color' , 'success');
-        return redirect()->route('admin.countries.index');
+        return redirect()->route('countries.index');
     }
 
     /**
@@ -66,9 +71,11 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Country $country)
     {
-        //
+
+        $name=$country->getTranslations('name' );
+        return view('countries.edit',compact('country','name'));
     }
 
     /**
@@ -78,9 +85,16 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCountryRequest $request, Country $country)
     {
-        //
+        $country->setTranslation('name','en',$request->validated('name_en'))
+        ->setTranslation('name','ar',$request->validated('name_ar'));
+        $country->update();
+
+
+        session()->flash('message' , 'Edited succesfuly');
+        session()->flash('message-color' , 'success');
+        return redirect()->route('countries.index');
     }
 
     /**
@@ -89,8 +103,12 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Country $country)
     {
-        //
+        $country->delete();
+
+        session()->flash('message' , 'Deleted succesfuly');
+        session()->flash('message-color' , 'success');
+        return redirect()->route('countries.index');
     }
 }

@@ -16,11 +16,11 @@
             </div>
         @endif
             <div class="mb-3">
-            <label class="form-label" for="name_en">Name in arabic</label>
+            <label class="form-label" for="name_en">Name in English</label>
             <input type="text" class="form-control" name="name_en">
           </div>
             <div class="mb-3">
-            <label class="form-label" for="name_ar">Name in english</label>
+            <label class="form-label" for="name_ar">Name in Arabic</label>
             <input type="text" class="form-control" name="name_ar">
           </div>
 

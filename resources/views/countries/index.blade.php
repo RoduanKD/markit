@@ -28,7 +28,7 @@
             <td>{{ $country->id }}</td>
             <td>{{ $country->name }}</a></td>
 
-            <td><a href="{{ route('countries.edit', $country) }}"> edit</a> |  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{ $country->id }}">
+            <td><a href="{{ route('countries.edit', $country) }}"> edit</a> |  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal{{ $country->id }}">
                 Delete
               </button> </td>
 
@@ -37,7 +37,38 @@
 
           </tr>
 
-          <div class="modal fade" id="Modal{{ $country->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal" tabindex="-1" id="Modal{{ $country->id }}">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-status bg-danger"></div>
+                <div class="modal-body text-center py-4">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
+                  <!-- SVG icon code with class="mb-2 text-danger icon-lg" -->
+                  <h3>Are you sure?</h3>
+                  <div class="text-muted">Do you really want to remove this country?</div>
+                </div>
+                <div class="modal-footer">
+                  <div class="w-100">
+                    <div class="row">
+                      <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
+                          Cancel
+                        </a></div>
+                      <div class="col">
+                        <form action="{{ route('countries.destroy',$country) }}" method="POST">@csrf @method('Delete')<input type="submit" class="btn btn-danger w-100" data-toggle="modal" data-target="#exampleModal" value="Delete item"></form>
+
+                        {{-- <a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal">
+                          Delete item
+                        </a> --}}
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{-- <div class="modal fade" id="Modal{{ $country->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -55,7 +86,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
 
     @endforeach
     {{ $countries->links() }}

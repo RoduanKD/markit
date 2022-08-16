@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Edit a country | {{$country->name}}</h1>
         <div class="mb-3">
-        <form action="{{ route('admin.cities.update' , $country) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('countries.update' , $country) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
             @if ($errors->any())
@@ -22,9 +22,15 @@
             </div>
         @endif
             <div class="form-group">
-                <label for="brand" class="form-label">Brand</label>
-                <input type="text" class="form-control" value={{old('name', $country->name)}} id="name" name="name">
+                <label for="name_en" class="form-label">Name in English</label>
+                <input type="text" class="form-control" value={{old('name_en', $name['en'])}} id="name_en" name="name_en">
               </div>
+
+              <div class="form-group">
+                <label for="name_ar" class="form-label">Name in Arabic</label>
+                <input type="text" class="form-control" value={{old('name_ar', $name['ar'])}} id="name_ar" name="name_ar">
+              </div>
+
 
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

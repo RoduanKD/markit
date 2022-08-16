@@ -1750,12 +1750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RoduanKD/Larastarters.git",
-                "reference": "5b783cbc795c394c9fbd4ab5c580a05ca1570622"
+                "reference": "5a9b78671306770f87558dab949aa96400937ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RoduanKD/Larastarters/zipball/5b783cbc795c394c9fbd4ab5c580a05ca1570622",
-                "reference": "5b783cbc795c394c9fbd4ab5c580a05ca1570622",
+                "url": "https://api.github.com/repos/RoduanKD/Larastarters/zipball/5a9b78671306770f87558dab949aa96400937ad6",
+                "reference": "5a9b78671306770f87558dab949aa96400937ad6",
                 "shasum": ""
             },
             "type": "library",
@@ -1784,7 +1784,7 @@
             "support": {
                 "source": "https://github.com/RoduanKD/Larastarters/tree/add-vite-support-to-bootstrap-themes"
             },
-            "time": "2022-08-13T22:24:31+00:00"
+            "time": "2022-08-15T12:45:51+00:00"
         },
         {
             "name": "league/commonmark",
