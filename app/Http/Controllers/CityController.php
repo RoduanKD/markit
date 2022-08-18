@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCityRequest;
+use App\Models\City;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -13,7 +16,9 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        $cities=City::paginate(3);
+        // $cities->withquerystring();
+       return view('cities.index',compact('cities'));
     }
 
     /**
@@ -23,7 +28,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        $countries=Country::all();
+        return view('cities.create',compact('countries'));
     }
 
     /**
@@ -32,9 +38,25 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCityRequest $request)
     {
-        //
+        $name=['en' => $request->validated('name_en'),'ar' => $request->validated('name_ar')];
+        $city=new City();
+        $city->setTranslation('name','en',$request->validated('name_en'))
+        ->setTranslation('name','ar',$request->validated('name_ar'));
+        $city->country_id=$request->validated('country');
+
+
+
+        // array_merge($request->validated(),['name' => $name]);
+        // dd($name);
+        // $city=City::create($name);
+        // $city->name=$name;
+        $city->save();
+
+        session()->flash('message' , 'Added succesfuly');
+        session()->flash('message-color' , 'success');
+        return redirect()->route('cities.index');
     }
 
     /**
@@ -54,9 +76,12 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(City $city)
     {
-        //
+
+        $name=$city->getTranslations('name' );
+        $countries=Country::all();
+        return view('cities.edit',compact('city','name','countries'));
     }
 
     /**
@@ -66,9 +91,17 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCityRequest $request, City $city)
     {
-        //
+        $city->setTranslation('name','en',$request->validated('name_en'))
+        ->setTranslation('name','ar',$request->validated('name_ar'));
+        $city->country_id=$request->validated('country');
+        $city->update();
+
+
+        session()->flash('message' , 'Edited succesfuly');
+        session()->flash('message-color' , 'success');
+        return redirect()->route('cities.index');
     }
 
     /**
@@ -77,8 +110,13 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(City $city)
     {
-        //
+            $city->delete();
+            session()->flash('message' , 'Deleted succesfuly');
+            session()->flash('message-color' , 'success');
+
+
+        return redirect()->route('cities.index');
     }
 }
