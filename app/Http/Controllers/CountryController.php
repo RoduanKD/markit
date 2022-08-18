@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCountryRequest;
+use App\Models\City;
 use App\Models\Country;
 use Illuminate\Http\Request;
 
@@ -60,9 +61,11 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Country $country)
     {
-        //
+        $cities=City::where('country_id',$country->id)->paginate(3);
+        // $cities->withquerystring();
+       return view('cities.index',compact('cities'));
     }
 
     /**
@@ -105,10 +108,13 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        $country->delete();
+        if(!count($country->cities))
+        {
+            $country->delete();
+            session()->flash('message' , 'Deleted succesfuly');
+            session()->flash('message-color' , 'success');
+        }
 
-        session()->flash('message' , 'Deleted succesfuly');
-        session()->flash('message-color' , 'success');
         return redirect()->route('countries.index');
     }
 }

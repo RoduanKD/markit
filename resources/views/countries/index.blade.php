@@ -26,7 +26,7 @@
 
           <tr>
             <td>{{ $country->id }}</td>
-            <td>{{ $country->name }}</a></td>
+            <td><a href="{{ route('countries.show',$country) }}">{{ $country->name }}</a></td>
 
             <td><a href="{{ route('countries.edit', $country) }}"> edit</a> |  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal{{ $country->id }}">
                 Delete
