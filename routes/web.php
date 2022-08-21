@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/contact-us', [MessageController::class, 'store'])->name('messages.store');
+Route::post('/contact-us', [\App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
 
 
 
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-    Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
-    Route::get('messages/{message}', [MessageController::class, 'show'])->name('messages.show');
-    Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+    Route::get('messages', [\App\Http\Controllers\MessageController::class, 'index'])->name('messages.index');
+    Route::get('messages/{message}', [\App\Http\Controllers\MessageController::class, 'show'])->name('messages.show');
+    Route::delete('messages/{message}', [\App\Http\Controllers\MessageController::class, 'destroy'])->name('messages.destroy');
 });

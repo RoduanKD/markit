@@ -11,12 +11,12 @@ class MessageController extends Controller
     {
         $messages = Message::all();
 
-        return view('message.index', compact('messages'));
+        return view('messages.index', compact('messages'));
     }
 
     public function show(Message $message)
     {
-        return view('message.show', compact('message'));
+        return view('messages.show', compact('message'));
     }
 
     public function store(Request $request)
