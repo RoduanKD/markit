@@ -15,7 +15,7 @@ namespace App\Models{
  * App\Models\Area
  *
  * @property int $id
- * @property mixed $name
+ * @property array $name
  * @property int $city_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
