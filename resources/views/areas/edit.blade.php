@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Edit a area')
+@section('title', 'Edit an area')
 
 
 
 @section('content')
 <section>
     <div class="container">
-        <h1>Edit a area | {{$area->name}}</h1>
+        <h1>Edit an area | {{$area->name}}</h1>
         <div class="mb-3">
         <form action="{{ route('areas.update' , $area) }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -31,17 +31,17 @@
                 <input type="text" class="form-control" value={{old('name_ar', $name['ar'])}} id="name_ar" name="name_ar">
               </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label class="form-label" for="country">Country</label>
-                <select class="form-control" name="country">
-                @foreach ($countries as $country)
-                    <option value="{{ $country->id }}"  @if ($country->id==$area->country_id)
+                <select class="form-control" name="city">
+                @foreach ($cities as $city)
+                    <option value="{{ $city->id }}"  @if ($city->id==$area->city_id)
                         selected
-                    @endif>{{ $country->name }}</option>
+                    @endif>{{ $city->name }}</option>
                 @endforeach
                 </select>
-              </div>
-
+              </div> --}}
+              @livewire('select-cities',['city'=>$area->city->id,'country'=>$area->city->country_id])
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
           <div class="mb-3">

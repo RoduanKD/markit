@@ -7,8 +7,8 @@
     <div class="container">
 
         <div class="cow">
-            <h3>cities</h3>
-            <h5><a href="{{  route('cities.create') }}">Create a city</a></h5>
+            <h3>areas</h3>
+            <h5><a href="{{  route('areas.create') }}">Create an area</a></h5>
         </div>
         <div class="table-responsive ">
     <table class="table table-vcenter table-nowrap">
@@ -17,20 +17,22 @@
             <th scope="col">#</th>
             <th scope="col">name</th>
             <th scope="col">Country</th>
+            <th scope="col">City</th>
             </tr>
         </thead>
         <tbody>
-    @foreach ($cities as $city)
+    @foreach ($areas as $area)
 
 
 
 
           <tr>
-            <td>{{ $city->id }}</td>
-            <td>{{ $city->name }}</a></td>
-            <td>{{ $city->country->name }}</a></td>
+            <td>{{ $area->id }}</td>
+            <td>{{ $area->name }}</a></td>
+            <td>{{ $area->city->country->name }}</a></td>
+            <td>{{ $area->city->name }}</a></td>
 
-            <td><a href="{{ route('cities.edit', $city) }}"> edit</a> |  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal{{ $city->id }}">
+            <td><a href="{{ route('areas.edit', $area) }}"> edit</a> |  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal{{ $area->id }}">
                 Delete
               </button> </td>
 
@@ -39,7 +41,7 @@
 
           </tr>
 
-          <div class="modal" tabindex="-1" id="Modal{{ $city->id }}">
+          <div class="modal" tabindex="-1" id="Modal{{ $area->id }}">
             <div class="modal-dialog modal-sm" role="document">
               <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -57,7 +59,7 @@
                           Cancel
                         </a></div>
                       <div class="col">
-                        <form action="{{ route('cities.destroy',$city) }}" method="POST">@csrf @method('Delete')<input type="submit" class="btn btn-danger w-100" data-toggle="modal" data-target="#exampleModal" value="Delete item"></form>
+                        <form action="{{ route('areas.destroy',$area) }}" method="POST">@csrf @method('Delete')<input type="submit" class="btn btn-danger w-100" data-toggle="modal" data-target="#exampleModal" value="Delete item"></form>
 
                         {{-- <a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal">
                           Delete item
@@ -70,7 +72,7 @@
             </div>
           </div>
 
-          {{-- <div class="modal fade" id="Modal{{ $city->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          {{-- <div class="modal fade" id="Modal{{ $area->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -84,14 +86,14 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <form action="{{ route('cities.destroy',$city) }}" method="POST">@csrf @method('Delete')<input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="delete"></form>
+                  <form action="{{ route('areas.destroy',$area) }}" method="POST">@csrf @method('Delete')<input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="delete"></form>
                 </div>
               </div>
             </div>
           </div> --}}
 
     @endforeach
-    {{ $cities->links() }}
+    {{ $areas->links() }}
     </tbody>
     </table>
     </div>

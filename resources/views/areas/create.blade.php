@@ -24,15 +24,8 @@
             <input type="text" class="form-control" name="name_ar">
           </div>
 
-            <div class="mb-3">
-            <label class="form-label" for="city">City</label>
-            <select class="form-control" name="city">
-            @foreach ($countries as $city)
-                <option value="{{ $city->id }}">{{ $city->name }}</option>
-            @endforeach
-            </select>
-          </div>
 
+          @livewire('select-cities',['country'=>'','city' =>''])
 
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

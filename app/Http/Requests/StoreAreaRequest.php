@@ -13,7 +13,7 @@ class StoreAreaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreAreaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name_ar'      =>  'string',
+            'name_en'      =>  'string',
+            'city'      =>  'integer|exists:cities,id',
         ];
     }
 }
