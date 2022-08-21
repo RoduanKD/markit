@@ -33,7 +33,7 @@ class MessageController extends Controller
         $message->content = $request->content;
         $message->save();
 
-        return redirect('');
+        return redirect(route('messages.index'));
     }
 
     public function destroy(Message $message)
@@ -41,6 +41,6 @@ class MessageController extends Controller
         $message->delete();
         $message = Message::all();
 
-        return view('messages.index', compact('messages'));
+        return redirect(route('messages.index'));
     }
 }
