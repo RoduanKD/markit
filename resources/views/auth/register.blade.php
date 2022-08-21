@@ -9,7 +9,7 @@
 
             <div class="mb-3">
                 <label class="form-label">{{ __('First_Name') }}</label>
-                <input type="text" name="firstname" class="form-control @error('firstname') is-invalid @enderror" placeholder="{{ __('FirstName') }}">
+                <input type="text" name="firstname" class="form-control @error('firstname') is-invalid @enderror" placeholder="{{ __('FirstName') }}" value="{{ old('firstname') }}">
                 @error('firstname')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -17,7 +17,7 @@
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Last_Name') }}</label>
-                <input type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" placeholder="{{ __('LastName') }}">
+                <input type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" placeholder="{{ __('LastName') }}" value="{{ old('lastname') }}">
                 @error('lastname')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -25,7 +25,7 @@
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Phone_Number') }}</label>
-                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="{{ __('Phone') }}">
+                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="{{ __('Phone') }}" value="{{ old('phone') }}">
                 @error('phone')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -33,7 +33,7 @@
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Email address') }}</label>
-                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Email Address') }}">
+                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Email Address') }}" value="{{ old('email') }}">
                 @error('email')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -41,7 +41,7 @@
 
             <div class="mb-3">
                 <label class="form-label">{{ __('BirthDate') }}</label>
-                <input type="date" name="birthdate" class="form-control @error('birthdate') is-invalid @enderror">
+                <input type="date" name="birthdate" class="form-control @error('birthdate') is-invalid @enderror" value="{{ old('birthdate') }}">
                 @error('birthdate')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -58,28 +58,28 @@
                 @enderror
             </div>
 
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label>Your Address</label>
                 <select name="area" class="form-control @error('area') is-invalid @enderror">
-                    @foreach ($areas as $area)
-                        <option value={{ $area->id }}>{{ $area->name }}</option>
-                    @endforeach
-                </select>
-                <select name="country" class="form-control @error('country') is-invalid @enderror">
-                    @foreach ($countries as $country)
-                        <option value={{ $country->id }}>{{ $country->name }}</option>
+                    @foreach ($adresses as $address)
+                        <option value={{ $address->area_id }}>{{ $address->area_name }}</option>
                     @endforeach
                 </select>
                 <select name="city" class="form-control @error('city') is-invalid @enderror">
-                    @foreach ($cities as $city)
-                        <option value={{ $city->id }}>{{ $city->name }}</option>
+                    @foreach ($adresses as $address)
+                        <option value={{ $address->city_id }}>{{ $address->city_name }}</option>
+                    @endforeach
+                </select>
+                <select name="country" class="form-control @error('country') is-invalid @enderror">
+                    @foreach ($adresses as $address)
+                        <option value={{ $address->country_id }}>{{ $address->country_name }}</option>
                     @endforeach
                 </select>
                 <input type="text" name="description" class="form-control @error('description`') is-invalid @enderror" placeholder="{{ __('address details') }}">
                 @error('address')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-            </div> --}}
+            </div>
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Password') }}</label>

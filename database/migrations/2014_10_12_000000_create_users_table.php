@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone');
             $table->boolean('is_male');
             $table->date('birthdate');
-            // $table->bigInteger('default_address_id');
+            $table->bigInteger('default_address_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->softDeletes();

@@ -27,7 +27,7 @@
                                 <th>{{ __('PhoneNumber') }}</th>
                                 <th>{{ __('Gender') }}</th>
                                 <th>{{ __('BirthDate') }}</th>
-                                {{-- <th>{{ __('Saller/Buier') }}</th> --}}
+                                <th>{{ __('Address') }}</th>
                                 {{-- <th>{{ __('Product he saled/bought') }}</th> --}}
                                 <th>{{ __('Created at') }}</th>
                                 <th>{{ __('Updated in') }}</th>
@@ -42,6 +42,7 @@
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->is_male }}</td>
                                 <td>{{ $user->birthdate }}</td>
+                                <td>{{ $adresses->area_name }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at->diffForhumans() }}</td>
                             </tr>
