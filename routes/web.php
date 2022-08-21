@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+});
+Route::prefix('admin')->group(function () {
+    Route::get('orders' , [OrderController::class , 'index'])->name('admin.order.index');
+    Route::get('orders/{order}' , [OrderController::class , 'show'])->name('admin.order.show');
 });
