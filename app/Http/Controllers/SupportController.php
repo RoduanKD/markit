@@ -14,7 +14,9 @@ class SupportController extends Controller
      */
     public function index()
     {
-        //
+        $supports = Support::all();
+
+        return view('supports.index', compact('supports'));
     }
 
     /**
@@ -35,7 +37,16 @@ class SupportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:3|max:255',
+            'details' => 'required|text|min:3|max:255',
+        ]);
+        $request = new Support();
+        $request->title = $request->title;
+        $request->details = $request->details;
+        $request->save();
+
+        return redirect(route('supports.index'));
     }
 
     /**
@@ -46,7 +57,7 @@ class SupportController extends Controller
      */
     public function show(Support $support)
     {
-        //
+        return view('supports.show', compact('support'));
     }
 
     /**

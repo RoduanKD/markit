@@ -30,5 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('support', [\App\Http\Controllers\SupportController::class, 'index'])->name('support.index');
+    Route::get('support', [\App\Http\Controllers\SupportController::class, 'index'])->name('supports.index');
+    Route::get('support', [\App\Http\Controllers\SupportController::class, 'show'])->name('supports.show');
 });
