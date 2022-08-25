@@ -3,6 +3,7 @@
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CoveredAreaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +38,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('countries',CountryController::class);
     Route::resource('cities',CityController::class);
     Route::resource('areas',AreaController::class);
+    Route::resource('coveredareas',CoveredAreaController::class);
 });
