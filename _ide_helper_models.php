@@ -23,6 +23,8 @@ namespace App\Models{
  * @property-read \App\Models\City $city
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CoveredArea[] $covered_areas
  * @property-read int|null $covered_areas_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
  * @method static \Illuminate\Database\Query\Builder|Area onlyTrashed()
@@ -45,10 +47,10 @@ namespace App\Models{
  *
  * @property int $id
  * @property array $name
+ * @property int $country_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property int $country_id
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Area[] $areas
  * @property-read int|null $areas_count
  * @property-read \App\Models\Country $country
@@ -75,12 +77,12 @@ namespace App\Models{
  * @property int $id
  * @property int $author_id
  * @property string $content
- * @property int $commentable_id
  * @property string $commentable_type
+ * @property int $commentable_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \App\Models\User|null $author
+ * @property-read \App\Models\User $author
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
@@ -179,11 +181,29 @@ namespace App\Models{
 /**
  * App\Models\Order
  *
- * @property-read \App\Models\User|null $buyer
- * @property-read \App\Models\User|null $seller
+ * @property int $id
+ * @property int $buyer_id
+ * @property int $seller_id
+ * @property int $product_id
+ * @property int $payment_method
+ * @property int $status
+ * @property int $quantity
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $buyer
+ * @property-read \App\Models\User $seller
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBuyerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereSellerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  */
 	class Order extends \Eloquent {}
 }
@@ -192,6 +212,10 @@ namespace App\Models{
 /**
  * App\Models\Permission
  *
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $role
  * @property-read int|null $role_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
@@ -199,6 +223,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Permission newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Permission newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Permission query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereUpdatedAt($value)
  */
 	class Permission extends \Eloquent {}
 }
@@ -207,6 +235,18 @@ namespace App\Models{
 /**
  * App\Models\Product
  *
+ * @property int $id
+ * @property mixed $name
+ * @property mixed $description
+ * @property int $price
+ * @property int $quantity
+ * @property int $currency_id
+ * @property int $category_id
+ * @property int $area_id
+ * @property int $owner_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\Area $area
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
@@ -216,6 +256,18 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Query\Builder|Product onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereAreaId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCurrencyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereOwnerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Product withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Product withoutTrashed()
  */
@@ -226,6 +278,10 @@ namespace App\Models{
 /**
  * App\Models\Role
  *
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
@@ -233,6 +289,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
  */
 	class Role extends \Eloquent {}
 }
@@ -242,17 +302,38 @@ namespace App\Models{
  * App\Models\User
  *
  * @property int $id
- * @property string $name
+ * @property string $firstname
+ * @property string $lastname
  * @property string $email
+ * @property string $phone
+ * @property int $is_male
+ * @property string $birthdate
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Area[] $areas
+ * @property-read int|null $areas_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comment
+ * @property-read int|null $comment_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DeliveryTask[] $delivery_task
+ * @property-read int|null $delivery_task_count
+ * @property-read mixed $average_rating
+ * @property-read mixed $sum_rating
+ * @property-read mixed $user_average_rating
+ * @property-read mixed $user_sum_rating
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $order
+ * @property-read int|null $order_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permission
  * @property-read int|null $permission_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $product
+ * @property-read int|null $product_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\willvincent\Rateable\Rating[] $ratings
+ * @property-read int|null $ratings_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $role
  * @property-read int|null $role_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
@@ -260,15 +341,23 @@ namespace App\Models{
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereBirthdate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstname($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsMale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastname($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  */
 	class User extends \Eloquent {}
 }

@@ -32,4 +32,10 @@ class Area extends Model
     {
         return $this->hasMany(CoveredArea::class);
     }
+
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'covered_areas');
+    }
 }

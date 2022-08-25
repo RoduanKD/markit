@@ -93,4 +93,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function areas()
+    {
+        return $this->belongsToMany(Area::class,'covered_areas','employee_id','area_id');
+    }
 }
