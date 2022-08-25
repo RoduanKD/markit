@@ -17,9 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = Model::all();
+        $products = Product::latest()->paginate(3);
 
-        $data;
+        return view('products.index', compact('products'));
+
     }
 
     /**
@@ -29,6 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
+        return view('products.create',compact('categories'));
 
     }
 
@@ -51,7 +54,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('admin.products.show', compact('product'));
+        return view('admin.products.show', compact('products'));
     }
 
     /**
