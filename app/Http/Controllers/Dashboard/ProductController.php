@@ -85,7 +85,7 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        $name=$product->getTranslations('name');
+        $name=$product->getTranslations('name' );
         // $categories=Category::all();
 
         return view('products.edit', compact('product','name','description'));
@@ -120,8 +120,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-
-
+        dd($product);
         $product->delete();
 
         return redirect()->route('products.index');

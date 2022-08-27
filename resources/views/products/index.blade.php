@@ -28,7 +28,7 @@
                     {{ $product->getFirstMedia() }}
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <h5 class="card-title">{{ $product['name'] }}</h5>
                         <a href="{{ route('products.show', $product) }}" class="text-primary"> show more
                             info
                         </a>
@@ -48,7 +48,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">DELETE THIS CAR
+                                                <h5 class="modal-title" id="exampleModalLabel">DELETE THIS PRODUCTS
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
@@ -56,7 +56,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                ARE YOU SURE YOU WANT TO DELETE THIS CAR!
+                                                ARE YOU SURE YOU WANT TO DELETE THIS PRODUCTS!
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
