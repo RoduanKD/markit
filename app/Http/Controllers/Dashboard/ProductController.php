@@ -125,4 +125,10 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
+
+    public function Sort_by_rate(Product $product)
+    {
+
+        return Product::RateSort();
+    }
 }

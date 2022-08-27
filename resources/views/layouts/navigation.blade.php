@@ -33,7 +33,7 @@
                     </li>
 
                     <li class="nav-item @if(request()->routeIs('products.index')) active @endif">
-                        <a class="nav-link" href="{{ route('products.index') }}" >
+                        <a class="nav-link dropdown-toggle" href="{{ route('products.index') }}" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -47,6 +47,11 @@
                                 {{ __('Products') }}
                             </span>
                         </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ route('products_rates') }}" >
+                                Sort By Rate
+                            </a>
+                        </div>
                     </li>
 
                     <li class="nav-item @if(request()->routeIs('about')) active @endif">

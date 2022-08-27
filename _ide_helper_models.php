@@ -238,20 +238,23 @@ namespace App\Models{
  * @property array $description
  * @property int $price
  * @property int $quantity
- * @property int $currency_id
- * @property int $category_id
- * @property int $area_id
- * @property int $owner_id
+ * @property int|null $currency_id
+ * @property int|null $category_id
+ * @property int|null $area_id
+ * @property int|null $owner_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \App\Models\Area $area
+ * @property-read \App\Models\Area|null $area
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
  * @property-read int|null $orders_count
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product ofCategory($category)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product ofRate($category)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product ofRateSort($category)
  * @method static \Illuminate\Database\Query\Builder|Product onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereAreaId($value)
