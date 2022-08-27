@@ -63,9 +63,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        return view('admin.products.show', compact('products'));
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -76,7 +76,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('products.edit', compact('product'));
+
     }
 
     /**
@@ -88,7 +89,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect()->route('admin.cars.index');
+        $product = Product::find($id);
+        $validated = $request->validate([
+            'name'         => 'required|min:3',
+            'price'         => 'required|numeric|min:100000',
+            'description'   => 'required',
+        ]);
+
+        $product->update($validated);
+
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -99,8 +109,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+
+
         $product->delete();
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('products.index');
     }
 }
