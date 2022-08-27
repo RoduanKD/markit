@@ -43,12 +43,21 @@ class ProductController extends Controller
      */
     public function store(AddProductRequest $request)
     {
-        $request->currency_id = 1;
-        $request->category_id = 1;
-        $request->area_id = 1;
-        $request->owner_id = auth()->user()->id;
+        $name=['en' => $request->validated('name_en'),'ar' => $request->validated('name_ar')];
+        $product=new Product();
+        $product
+        ->setTranslation('name','en',$request->validated('name_en'))
+        ->setTranslation('name','ar',$request->validated('name_ar'))
 
-        $product = Product::create($request->validated());
+        ->setTranslation('description', 'en', 'Description in English')
+        ->setTranslation('description', 'ar', 'Description in Arabic');
+        $product->price = $request->price;
+        $product->currency_id = 1;
+        $product->category_id = 1;
+        //$product->area_id = 1;
+        $product->owner_id = auth()->user()->id;
+
+        $product->save();
 
         $product->addAllMediaFromRequest()->each(function ($file){
             $file->toMediaCollection();
@@ -74,10 +83,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($product)
     {
-        return view('products.edit', compact('product'));
+        $name=$product->getTranslations('name');
+        // $categories=Category::all();
 
+        return view('products.edit', compact('product','name','description'));
     }
 
     /**

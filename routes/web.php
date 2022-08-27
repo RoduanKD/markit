@@ -32,5 +32,5 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     Route::resource('products', ProductController::class);
-
+    Route::resource('media', MediaController::class)->only('destroy');
 });

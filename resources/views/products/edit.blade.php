@@ -24,141 +24,135 @@
 @endpush
 
 @section('content')
-    <section class="section py-10" style="padding-bottom: 50px">
-        <div class="container">
-            <form action="{{ route('admin.cars.update', $car) }}" method="POST">
+    <div class="container-xl">
+        <!-- Page title -->
+        <div class="page-header d-print-none">
+            <div class="row align-items-center">
+                <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle">
+                    {{ 'Mark-It' }}
+                </div>
+                    <h2 class="page-title">
+                        {{ __('Edit Product') }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <div class="container-xl">
+
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible">
+                <div class="d-flex">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon alert-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        {{ $message }}
+                    </div>
+                  </div>
+                <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+            </div>
+            @endif
+
+            <form action="{{ route('products.store') }}" method="POST" class="card" autocomplete="off" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="brand">Brand</label>
-                            <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand"
-                                name="brand" placeholder="Audi" value="{{ old('brand', $car->brand) }}">
-                            @error('brand')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="model">Model</label>
-                            <input type="text" class="form-control @error('model') is-invalid @enderror" id="model"
-                                name="model" placeholder="A4" value="{{ old('model', $car->model) }}">
-                            @error('model')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
+                <div class="card-body">
 
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">SYP</span>
-                                </div>
-                                <input name="price" id="price" type="number" min="10000000" step="500000"
-                                    class="form-control @error('price') is-invalid @enderror"
-                                    value="{{ old('price', $car->price, 25000000) }}">
-                            </div>
-                            @error('price')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label>Car category</label>
-                            <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ old('category_id', $car->category_id) == $category->id ? 'selected' : '' }}>
-                                        {{ $category->name }} ({{ $category->capacity }})</option>
-                                @endforeach
-                            </select>
-                            @error('category_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label>Gear Type</label>
-                            <select name="gear_type" class="form-control @error('gear_type') is-invalid @enderror">
-                                <option value="auto">Automatic</option>
-                                <option value="manual">Manual</option>
-                            </select>
-                            @error('gear_type')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Name') }}</label>
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" value="{{ old('name', $name['en']) }}" required>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="year">Year</label>
-                            <input name="year" id="year" type="number" min="1880"
-                                class="form-control @error('year') is-invalid @enderror"
-                                value="{{ old('year', $car->year) }}">
-                            @error('year')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="country">Country</label>
-                            <input type="text" class="form-control @error('country') is-invalid @enderror" id="country"
-                                name="country" placeholder="Germany" value="{{ old('country', $car->country) }}">
-                            @error('country')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label>Car colors</label>
-                            <select multiple name="colors[]" class="form-control @error('colors') is-invalid @enderror">
-                                @foreach ($colors as $color)
-                                    <option value={{ $color->id }} {{ $car->colors->contains($color) ? 'selected':'' }}>{{ $color->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('colors')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="form-check pb-5">
-                    <input name="is_new" type="checkbox" class="form-check-input @error('is_new') is-invalid @enderror"
-                        id="is_new" value="1" {{ old('is_new', $car->is_new == 'yes') ? 'checked':'' }}>
-                    <label class="form-check-label" for="is_new">This is a new car?</label>
-                    @error('is_new')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                    @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
 
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
-                        rows="5">{{ old('description', $car->description) }}</textarea>
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Price') }}</label>
+                        <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" placeholder="{{ __('price') }}" value="{{ old('price', $product->price) }}" required>
+                    </div>
+                    @error('price')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Quantity') }}</label>
+                        <input type="quantity" name="quantity" class="form-control @error('quantity') is-invalid @enderror" placeholder="{{ __('New quantity') }}" value="{{ old('quantity', $product->quantity) }}" required>
+                    </div>
+                    @error('quantity')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+
+                    {{-- <div class="mb-3">
+                        <label class="form-label required">{{ __('Category') }}</label>
+                        <div class="form-group">
+                        <label>Car category</label>
+                        <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }} ({{ $category->capacity }})</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    </div>
+                     @error('categories')
+                         <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Area') }}</label>
+                        <select multiple name="area" class="form-control @error('area') is-invalid @enderror">
+                              @foreach ($categories as $area)
+                                <option value={{ $area->id }}>{{ $area->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                     @error('categories')
+                         <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror --}}
+
+                    <div class="mb-3">
+                        @foreach ($product->getMedia() as $media)
+                        <div class="col-md-3">
+                            <img src="{{ $media->getUrl() }}" alt="" width="100%">
+                            <form action="{{ route('media.destroy', $media) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    @endforeach
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Description') }}</label>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                            rows="5">{{ old('description', $description['en']) }}</textarea>
+                        @error('description')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                     @error('description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                    </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-    </section>
+    </div>
+
 @endsection
-
-
