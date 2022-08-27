@@ -28,10 +28,12 @@ class AddProductRequest extends FormRequest
             'description'   =>  'required|string',
             'price'         =>  'required|numeric|max:10000000|min:1',
             'quantity'      =>  'required|integer|max:10000000|min:1',
-            'currency_id'   =>  'required|exists:currencies,id',
-            'category_id'   =>  'required|exists:categories,id',
-            'area_id'       =>  'required|exists:areas,id',
-            'owner_id'      =>  'required|exists:users,id'
+            'currency_id'   =>  'nullable|exists:currencies,id',
+            'category_id'   =>  'nullable|exists:categories,id',
+            'area_id'       =>  'nullable|exists:areas,id',
+            'owner_id'      =>  'nullable|exists:users,id',
+            'images'        =>  'required|array',
+            'images.*'      =>  'required|file|image'
         ];
     }
 }

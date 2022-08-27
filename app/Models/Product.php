@@ -19,6 +19,11 @@ class Product extends Model implements HasMedia
         'description',
         'price',
         'quantity',
+
+    ];
+
+    protected $guarded =
+    [
         'category_id',
         'currency_id',
         'area_id',

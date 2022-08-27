@@ -30,8 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('products.create',compact('categories'));
+        //$categories = Category::all();
+        return view('products.create');
 
     }
 
@@ -43,7 +43,18 @@ class ProductController extends Controller
      */
     public function store(AddProductRequest $request)
     {
+        $request->currency_id = 1;
+        $request->category_id = 1;
+        $request->area_id = 1;
+        $request->owner_id = auth()->user()->id;
+
         $product = Product::create($request->validated());
+
+        $product->addAllMediaFromRequest()->each(function ($file){
+            $file->toMediaCollection();
+        });
+
+        return redirect()->route('products.index');
     }
 
     /**
