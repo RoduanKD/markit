@@ -24,18 +24,18 @@ class AddProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'      =>  'string',
-            'name_en'      =>  'requiered|string',
-            'description_ar'   =>  'required|string',
-            'description_en'   =>  'required|string',
-            'price'         =>  'required|numeric|max:10000000|min:1',
-            'quantity'      =>  'required|integer|max:10000000|min:1',
-            'currency_id'   =>  'nullable|exists:currencies,id',
-            'category_id'   =>  'nullable|exists:categories,id',
-            'area_id'       =>  'nullable|exists:areas,id',
-            'owner_id'      =>  'nullable|exists:users,id',
-            'images'        =>  'required|array',
-            'images.*'      =>  'required|file|image'
+            'name_ar' => 'string',
+            'name_en' => 'requiered|string',
+            'description_ar' => 'required|string',
+            'description_en' => 'required|string',
+            'price' => 'required|numeric|min:1',
+            'quantity' => 'required|integer|max:10000000|min:1',
+            'currency_id' => 'nullable|exists:currencies,id',
+            'category_id' => 'nullable|exists:categories,id',
+            'area_id' => 'nullable|exists:areas,id',
+            'owner_id' => 'nullable|exists:users,id',
+            'images' => 'required|array',
+            'images.*' => 'required|file|image',
         ];
     }
 }

@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AddProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -18,10 +16,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(3);
+        $query = Product::latest();
+
+        if (request('order_by') === 'rating')
+            $query->rateSort();
+
+        $products = $query->paginate(3);
 
         return view('products.index', compact('products'));
-
     }
 
     /**
@@ -33,7 +35,6 @@ class ProductController extends Controller
     {
         //$categories = Category::all();
         return view('products.create');
-
     }
 
     /**
@@ -54,7 +55,7 @@ class ProductController extends Controller
             'owner_id' => 1,
         ]);
 
-        $product->addAllMediaFromRequest()->each(function ($file){
+        $product->addAllMediaFromRequest()->each(function ($file) {
             $file->toMediaCollection();
         });
 
@@ -80,10 +81,7 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        $name=$product->getTranslations('name' );
-        // $categories=Category::all();
-
-        return view('products.edit', compact('product','name','description'));
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -113,11 +111,5 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index');
-    }
-
-    public function Sort_by_rate(Product $product)
-    {
-
-        return Product::RateSort();
     }
 }
