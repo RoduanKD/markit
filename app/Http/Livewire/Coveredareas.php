@@ -26,8 +26,6 @@ class Coveredareas extends Component
     {
         $this->countries= Country::orderBy('name')->get();
         $this->user=Auth::user();
-        // $this->areas=Area::orderBy('name')->get();
-        // dd($this->areas);
         if($country)
         $this->countryId=$country;
         if($city)
@@ -61,9 +59,7 @@ class Coveredareas extends Component
         if ($this->cityId)
         {
             $this->areas=Area::where('city_id',$this->cityId)->get();
-            // $this->reset('areas');
-            // dd($this->areas[0]);
-            // $this->reset();
+
         }
     }
 
