@@ -5,6 +5,9 @@ namespace App\Http\Livewire;
 use App\Models\Area;
 use App\Models\City;
 use App\Models\Country;
+use Auth;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Livewire\Component;
 
 class Coveredareas extends Component
@@ -17,10 +20,12 @@ class Coveredareas extends Component
     public $areaId;
     public $cities;
     public $areas;
+    public $user;
 
     public function mount($country,$city)
     {
         $this->countries= Country::orderBy('name')->get();
+        $this->user=Auth::user();
         // $this->areas=Area::orderBy('name')->get();
         // dd($this->areas);
         if($country)
@@ -36,7 +41,7 @@ class Coveredareas extends Component
 
         if ($this->cityId)
         {
-            $this->areas=Area::where('country_id',$this->countryId)->get();
+            $this->areas=Area::where('city_id',$this->cityId)->get();
         }
         else $this->areas =[];
 
@@ -62,6 +67,16 @@ class Coveredareas extends Component
         }
     }
 
+    public function cover($areaId , $user)
+    {
+        $user=Auth::user();
+        $area=$user->areas()->where('id',$areaId)->get();
+        if($area->isEmpty()){
+
+            Auth::user()->areas()->attach($areaId);
+
+        }else dd('helo');
+    }
 
     public function render()
     {

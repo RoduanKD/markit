@@ -90,6 +90,9 @@ class CoveredAreaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        Auth::user()->areas()->detach($id);
+
+        return redirect()->route('coveredareas.index');
     }
 }
