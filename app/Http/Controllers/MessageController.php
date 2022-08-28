@@ -9,7 +9,7 @@ class MessageController extends Controller
 {
     public function index()
     {
-        $messages = Message::paginate(3);
+        $messages = Message::paginate(15);
         $messages->sortByDesc('id');
         return view('messages.index', compact('messages'));
     }
