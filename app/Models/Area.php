@@ -15,12 +15,12 @@ class Area extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = ['city_id', 'name'];
+
     public $translatable = ['name'];
 
     protected $casts = [
         'name' => 'array',
     ];
-
 
     public function city()
     {
@@ -39,6 +39,6 @@ class Area extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'covered_areas');
+        return $this->belongsToMany(User::class, 'covered_areas');
     }
 }

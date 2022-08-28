@@ -16,14 +16,14 @@ class CoveredAreaController extends Controller
      */
     public function index()
     {
-        $user= Auth::user();
-        $areas=$user->areas()->paginate(5);
+        $user = Auth::user();
+        $areas = $user->areas()->paginate(5);
         // dd($areas);
         // $areas=Area::whereHas('covered_areas', function ($q , User $user){
         //     $q->where('user_id',$user->id);
         // })->coverd_area::paginate(5);
         // $countries->withquerystring();
-       return view('coveredareas.index',compact('areas'));
+        return view('coveredareas.index', compact('areas'));
     }
 
     /**
@@ -33,7 +33,8 @@ class CoveredAreaController extends Controller
      */
     public function create()
     {
-        $user= Auth::user();
+        $user = Auth::user();
+
         return view('coveredareas.create');
     }
 

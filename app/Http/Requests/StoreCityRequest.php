@@ -24,9 +24,9 @@ class StoreCityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'      =>  'string',
-            'name_en'      =>  'string',
-            'country'      =>  'integer|exists:countries,id',
+            'name_ar' => 'string',
+            'name_en' => 'string',
+            'country' => 'integer|exists:countries,id',
         ];
     }
 }
