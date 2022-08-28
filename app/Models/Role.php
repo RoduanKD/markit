@@ -18,4 +18,31 @@ class Role extends Model
     {
         return $this->belongsToMany(User::class);
     }
+    public function scopeOfType($roleName){
+        $users = User::role('roleName')->get();
+    }
+    public function isRole($roleName)
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == $roleName)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public function isPermission($permissionName)
+    {
+        foreach ($this->permissions()->get() as $permission)
+        {
+            if ($permission->name == $permissionName)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
