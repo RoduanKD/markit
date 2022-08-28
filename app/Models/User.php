@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -89,7 +90,7 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function permission()
+    public function permissions()
     {
         return $this->belongsToMany(Permission::class);
     }
@@ -107,5 +108,25 @@ class User extends Authenticatable
     public function hasRole($roleName)
     {
         return (bool) $this->roles()->where('name', $roleName)->exists();
+    }
+
+    public function allPermissions(): Attribute
+    {
+        $permissions = $this->permissions->map(fn ($permission) => $permission->name);
+
+        // get permission of roles
+        foreach ($this->roles as $role) {
+            $rolePermissions = $role->permissions->map(fn ($permission) => $permission->name);
+            $permissions = $permissions->concat($rolePermissions);
+        }
+
+        return Attribute::make(
+            get: fn () => $permissions->unique(),
+        );
+    }
+
+    public function hasPermission($permissionName)
+    {
+        return $this->allPermissions->contains($permissionName);
     }
 }

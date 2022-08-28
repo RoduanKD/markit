@@ -9,6 +9,8 @@ class Role extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);
@@ -17,16 +19,5 @@ class Role extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
-    }
-
-    public function isPermission($permissionName)
-    {
-        foreach ($this->permissions()->get() as $permission) {
-            if ($permission->name == $permissionName) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
