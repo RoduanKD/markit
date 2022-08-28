@@ -14,33 +14,18 @@ class ProfileController extends Controller
         return view('auth.profile');
     }
 
-    public function update(Request $request)
+    public function update(ProfileUpdateRequest $request)
     {
 
-        $validated = $request->validate([
-            'firstname' => 'required|min:3|max:255|string',
-            'lastname'  => 'required|min:3|max:255|string',
-            'email'      => 'required|email|max:255',
-            'phone'      => 'required|digits_between:10,10',
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required|min:6'
-        ]);
-
-        if ($validated['password']) {
-            auth()->user()->update(['password' => Hash::make($validated['password'])]);
-        }
-
-
-        if ( $validated['email'] != auth()->user()->email) {
+        if ($request['email'] != auth()->user()->email) {
             auth()->user()->forceFill(['email_verified_at' => null]);
         }
-        auth()->user()->update([
-            'firstname' => $validated['firstname'],
-            'lastname' => $validated['lastname'],
-            'email' => $validated['email'],
-            'phone' => $validated['phone'],
-            'password' => Hash::make($validated['password'])
-        ]);
+
+        auth()->user()->update($request->validated());
+
+        if ($request['password']) {
+            auth()->user()->update(['password' => Hash::make($request['password'])]);
+        }
         return redirect()->back()->with('success', 'Profile updated.');
     }
 }
