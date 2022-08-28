@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CoveredAreaController;
 use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

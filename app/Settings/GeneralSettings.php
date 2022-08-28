@@ -2,9 +2,7 @@
 
 namespace App\Settings;
 
-use PharIo\Manifest\Email;
 use Spatie\LaravelSettings\Settings;
-
 
 class GeneralSettings extends Settings
 {

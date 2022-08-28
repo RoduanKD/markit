@@ -20,42 +20,52 @@
                 <h2 class="page-title" style="padding-bottom: 20px">
                     Settings
                 </h2>
-                <fieldset class="form-fieldset" style="background-color: white" >
+                <fieldset class="form-fieldset" style="background-color: white">
                     <div class="card-body">
-                        <div class="mb-3">
-                            <label class="form-label">Site Name</label>
-                            <input type="text"  class="form-control" @error('site_name') is-invalid @enderror
-                                name="site_name" placeholder="site name"
-                                value="{{ old('site_name', $settings->site_name) }}"  style="flex-direction: row;" >
-                            @error('site_name')
-                                <div class="invalid-feedback">error</div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Locale </label>
-                            <input type="text" class="form-control" @error('locale') is-invalid @enderror
-                                name="locale" placeholder="locale" value="{{ old('locale', $settings->locale) }}">
-                            @error('locale')
-                                <div class="invalid-feedback">error</div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Color picker</label>
-                            <input type="color" name="color" class=" form-control-color"
-                                value="{{ old('color', $settings->color) }}">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email </label>
-                            <input type="email" class="form-control" @error('email') is-invalid @enderror
-                                name="email" placeholder="email" value="{{ old('email', $settings->email) }}">
-                            @error('email')
-                                <div class="invalid-feedback">error</div>
-                            @enderror
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Site Name</label>
+                                    <input type="text" class="form-control" @error('site_name') is-invalid @enderror
+                                        name="site_name" placeholder="site name"
+                                        value="{{ old('site_name', $settings->site_name) }}" style="flex-direction: row;">
+                                    @error('site_name')
+                                        <div class="invalid-feedback">error</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Locale </label>
+                                    <input type="text" class="form-control" @error('locale') is-invalid @enderror
+                                        name="locale" placeholder="locale" value="{{ old('locale', $settings->locale) }}">
+                                    @error('locale')
+                                        <div class="invalid-feedback">error</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Color picker</label>
+                                    <input type="color" name="color" class="form-control-color"
+                                        value="{{ old('color', $settings->color) }}" style="width: 100%;">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Email </label>
+                                    <input type="email" class="form-control" @error('email') is-invalid @enderror
+                                        name="email" placeholder="email" value="{{ old('email', $settings->email) }}">
+                                    @error('email')
+                                        <div class="invalid-feedback">error</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Link </label>
-                            <input type="text" class="form-control" @error('link') is-invalid @enderror
-                                name="link" value="{{ old('link', $settings->link) }}">
+                            <input type="text" class="form-control" @error('link') is-invalid @enderror name="link"
+                                value="{{ old('link', $settings->link) }}">
                             @error('link')
                                 <div class="invalid-feedback">error</div>
                             @enderror
