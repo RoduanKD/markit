@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AddProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -94,15 +95,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $validated = $request->validate([
-            'name'         => 'required|min:3',
-            'price'         => 'required|numeric|min:100000',
-            'description'   => 'required',
-        ]);
+        $validated = $request->validated();
 
         $product->update($validated);
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -113,7 +110,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        dd($product);
         $product->delete();
 
         return redirect()->route('products.index');

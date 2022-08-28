@@ -26,7 +26,8 @@ class UpdateProductRequest extends FormRequest
         return [
             'name_ar'      =>  'string',
             'name_en'      =>  'requiered|string',
-            'description'   =>  'required|string',
+            'description_ar'   =>  'required|string',
+            'description_en'   =>  'required|string',
             'price'         =>  'required|numeric|max:10000000|min:1',
             'quantity'      =>  'required|integer|max:10000000|min:1',
             'currency_id'   =>  'nullable|exists:currencies,id',

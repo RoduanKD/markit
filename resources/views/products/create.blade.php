@@ -97,7 +97,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
 
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label required">{{ __('Category') }}</label>
                         <select multiple name="category" class="form-control @error('category') is-invalid @enderror">
                               @foreach ($categories as $category)
@@ -112,14 +112,14 @@
                     <div class="mb-3">
                         <label class="form-label required">{{ __('Area') }}</label>
                         <select multiple name="area" class="form-control @error('area') is-invalid @enderror">
-                              @foreach ($categories as $area)
+                              @foreach ($areas as $area)
                                 <option value={{ $area->id }}>{{ $area->name }}</option>
                             @endforeach
                         </select>
                     </div>
-                     @error('categories')
+                     @error('areas')
                          <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror --}}
+                    @enderror
 
                     <div class="mb-3">
                         <label class="form-label required">{{ __('Images') }}</label>
