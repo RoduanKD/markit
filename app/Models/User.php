@@ -13,7 +13,9 @@ use willvincent\Rateable\Rateable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, Rateable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes
+    //  ,Rateable
+     ;
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +30,7 @@ class User extends Authenticatable
         'is_male',
         'birthdate',
         'password',
+        // 'email_verified_at',
     ];
 
     /**

@@ -45,10 +45,18 @@
 
 
                     <div class="mb-3">
-                        <label class="form-label required">{{ __('Name') }}</label>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" value="{{ old('name', auth()->user()->name) }}" required>                        
+                        <label class="form-label required">{{ __('First Name') }}</label>
+                        <input type="text" name="firstname" class="form-control @error('firstname') is-invalid @enderror" placeholder="{{ __('First name') }}" value="{{ old('firstname', auth()->user()->firstname) }}" required>
                     </div>
-                    @error('name')
+                    @error('firstname')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Last Name') }}</label>
+                        <input type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" placeholder="{{ __('Last name') }}" value="{{ old('lastname', auth()->user()->lastname) }}" >
+                    </div>
+                    @error('lastname')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
 
@@ -57,6 +65,14 @@
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required>
                     </div>
                     @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Phone number') }}</label>
+                        <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="{{ __('Phone') }}" value="{{ old('phone', auth()->user()->phone) }}" required>
+                    </div>
+                    @error('phone')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
 
