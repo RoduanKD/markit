@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AddProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
+use App\Models\Area;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -34,8 +35,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //$categories = Category::all();
-        return view('products.create');
+        $categories = [];
+        $areas = Area::all(['id','name']);
+        return view('products.create',compact('categories','areas'));
     }
 
     /**

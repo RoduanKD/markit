@@ -44,7 +44,7 @@
                     </li>
 
                     <li class="nav-item @if (request()->routeIs('products.index')) active @endif">
-                        <a class="nav-link dropdown-toggle" href="{{ route('products.index') }}"
+                        <a class="nav-link" href="{{ route('products.index') }}"
                             data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
