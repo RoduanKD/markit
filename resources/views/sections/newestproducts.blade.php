@@ -22,7 +22,7 @@
 
              <div class="col-md-12">
                  <div class="text-center m-top-20">
-                     <a href="" class="btn btn--lg btn-primary">All New Products</a>
+                     <a href="{{ route('products') }}" class="btn btn--lg btn-primary">All New Products</a>
                  </div>
              </div>
 

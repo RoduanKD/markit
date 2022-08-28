@@ -5,7 +5,7 @@
             <figcaption>
                 <ul class="list-unstyled">
                     <li><a href=""><span class="icon-basket"></span></a></li>
-                    <li><a href="">Live Demo</a></li>
+                    <li><a href="{{ route('showproduct') }}">more details</a></li>
                 </ul>
             </figcaption>
         </figure>

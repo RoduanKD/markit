@@ -18,7 +18,7 @@
                                 </li>
                                 <li>
                                     <span class="icon-envelope-open"></span>
-                                    <a href="mailto:support@aazztech.com">support@aazztech.com</a>
+                                    <a href="mailto:support@aazztech.com">support@backend5.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -93,7 +93,7 @@
                                     <a href="#">Support Forum</a>
                                 </li>
                                 <li>
-                                    <a href="#">Terms & Conditions</a>
+                                    <a href="href="{{ route('terms&conditions') }}"">Terms & Conditions</a>
                                 </li>
                                 <li>
                                     <a href="#">Support Policy</a>
@@ -129,8 +129,8 @@
                 <div class="col-md-12">
                     <div class="copyright-text">
                         <p>&copy; 2022
-                            <a href="#">DigiPro</a>. All rights reserved. Created by
-                            <a href="#">AazzTech</a>
+                            <a href="#">markit </a>. All rights reserved. Created by
+                            <a href="#">Backend group #5</a>
                         </p>
                     </div>
                     <div class="go_top">

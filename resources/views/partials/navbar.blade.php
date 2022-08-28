@@ -27,7 +27,7 @@
 
                                             </li>
                                             <li class="has_dropdown">
-                                                <a href="all-products.html">All Product</a>
+                                                <a href="{{ route('products') }}">All Product</a>
                                                 <div class="dropdown dropdown--menu">
                                                     <ul>
                                                         <li>
@@ -44,7 +44,7 @@
                                                 </div>
                                             </li>
                                             <li class="has_dropdown">
-                                                <a href="category-grid.html">Categories</a>
+                                                <a href="{{ route('categories') }}">Categories</a>
                                                 <div class="dropdown dropdown--menu">
                                                     <ul>
                                                         <li>
@@ -229,7 +229,9 @@
                                                                     </li>
 
                                                                     <li>
-                                                                        <a href="term-condition.html">Terms &amp;
+                                                                        <a href="{{ route('terms&conditions') }}">
+                                                                            Terms
+                                                                            &amp;
                                                                             Conditions</a>
                                                                     </li>
                                                                     <li>
