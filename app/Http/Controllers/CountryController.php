@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCountryRequest;
 use App\Models\City;
 use App\Models\Country;
-use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
@@ -16,9 +15,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries=Country::paginate(3);
+        $countries = Country::paginate(3);
         // $countries->withquerystring();
-       return view('countries.index',compact('countries'));
+        return view('countries.index', compact('countries'));
     }
 
     /**
@@ -39,10 +38,10 @@ class CountryController extends Controller
      */
     public function store(StoreCountryRequest $request)
     {
-        $name=['en' => $request->validated('name_en'),'ar' => $request->validated('name_ar')];
-        $country=new Country();
-        $country->setTranslation('name','en',$request->validated('name_en'))
-        ->setTranslation('name','ar',$request->validated('name_ar'));
+        $name = ['en' => $request->validated('name_en'), 'ar' => $request->validated('name_ar')];
+        $country = new Country();
+        $country->setTranslation('name', 'en', $request->validated('name_en'))
+        ->setTranslation('name', 'ar', $request->validated('name_ar'));
 
         // array_merge($request->validated(),['name' => $name]);
         // dd($name);
@@ -50,8 +49,9 @@ class CountryController extends Controller
         // $country->name=$name;
         $country->save();
 
-        session()->flash('message' , 'Added succesfuly');
-        session()->flash('message-color' , 'success');
+        session()->flash('message', 'Added succesfuly');
+        session()->flash('message-color', 'success');
+
         return redirect()->route('countries.index');
     }
 
@@ -63,9 +63,9 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        $cities=City::where('country_id',$country->id)->paginate(3);
+        $cities = City::where('country_id', $country->id)->paginate(3);
         // $cities->withquerystring();
-       return view('cities.index',compact('cities'));
+        return view('cities.index', compact('cities'));
     }
 
     /**
@@ -76,9 +76,9 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
+        $name = $country->getTranslations('name');
 
-        $name=$country->getTranslations('name' );
-        return view('countries.edit',compact('country','name'));
+        return view('countries.edit', compact('country', 'name'));
     }
 
     /**
@@ -90,13 +90,13 @@ class CountryController extends Controller
      */
     public function update(StoreCountryRequest $request, Country $country)
     {
-        $country->setTranslation('name','en',$request->validated('name_en'))
-        ->setTranslation('name','ar',$request->validated('name_ar'));
+        $country->setTranslation('name', 'en', $request->validated('name_en'))
+        ->setTranslation('name', 'ar', $request->validated('name_ar'));
         $country->update();
 
+        session()->flash('message', 'Edited succesfuly');
+        session()->flash('message-color', 'success');
 
-        session()->flash('message' , 'Edited succesfuly');
-        session()->flash('message-color' , 'success');
         return redirect()->route('countries.index');
     }
 
@@ -108,11 +108,10 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        if(!count($country->cities))
-        {
+        if (! count($country->cities)) {
             $country->delete();
-            session()->flash('message' , 'Deleted succesfuly');
-            session()->flash('message-color' , 'success');
+            session()->flash('message', 'Deleted succesfuly');
+            session()->flash('message-color', 'success');
         }
 
         return redirect()->route('countries.index');

@@ -76,7 +76,7 @@ class User extends Authenticatable
 
     public function areas()
     {
-        return $this->belongsToMany(Area::class,'covered_areas','employee_id','area_id');
+        return $this->belongsToMany(Area::class, 'covered_areas', 'employee_id', 'area_id');
     }
 
     public function address()
@@ -101,7 +101,7 @@ class User extends Authenticatable
 
     public function scopeRole($query, $roleName)
     {
-        return $query->whereHas('roles', Fn ($q) => $q->where('name', $roleName));
+        return $query->whereHas('roles', fn ($q) => $q->where('name', $roleName));
     }
 
     public function hasRole($roleName)

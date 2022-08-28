@@ -18,8 +18,9 @@ class ProductController extends Controller
     {
         $query = Product::latest();
 
-        if (request('order_by') === 'rating')
+        if (request('order_by') === 'rating') {
             $query->rateSort();
+        }
 
         $products = $query->paginate(3);
 

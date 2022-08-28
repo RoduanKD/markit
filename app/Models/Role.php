@@ -21,10 +21,8 @@ class Role extends Model
 
     public function isPermission($permissionName)
     {
-        foreach ($this->permissions()->get() as $permission)
-        {
-            if ($permission->name == $permissionName)
-            {
+        foreach ($this->permissions()->get() as $permission) {
+            if ($permission->name == $permissionName) {
                 return true;
             }
         }
