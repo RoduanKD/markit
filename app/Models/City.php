@@ -18,6 +18,10 @@ class City extends Model
     protected $fillable = ['country_id', 'name'];
     public $translatable = ['name'];
 
+    protected $casts = [
+        'name' => 'array',
+    ];
+
 
     public function country()
     {

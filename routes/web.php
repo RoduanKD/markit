@@ -25,7 +25,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/test', Test::class)->name('test');
 
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
@@ -38,5 +37,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('countries',CountryController::class);
     Route::resource('cities',CityController::class);
     Route::resource('areas',AreaController::class);
-    Route::resource('coveredareas',CoveredAreaController::class);
+    Route::resource('coveredareas',CoveredAreaController::class)->only(['index', 'create']);
 });

@@ -26,9 +26,6 @@
     </div>
 
     <div class="table-responsive " wire:model="areas">
-
-
-
         <table class="table table-vcenter table-nowrap">
             <thead class="thead-dark">
                 <tr>
@@ -50,24 +47,18 @@
                             <td>
                                 @php
 
-                                $userarea=$user->areas()->where('id',$area->id)->get();
+                                    $userarea = $user
+                                        ->areas()
+                                        ->where('id', $area->id)
+                                        ->get();
                                 @endphp
-                                @if($userarea->isEmpty())
-
-
-                                    <button type="button"
-                                        class="btn btn-primary" wire:click="cover({{ $area->id }},{{ $user }})">
+                                @if ($userarea->isEmpty())
+                                    <button type="button" class="btn btn-primary"
+                                        wire:click="cover({{ $area->id }},{{ $user }})">
                                         Cover
-                                        </button>
-
-
-
-                                    @endif
-                                    </td>
-
-
-
-
+                                    </button>
+                                @endif
+                            </td>
                         </tr>
 
                         <div class="modal" tabindex="-1" id="Modal{{ $area->id }}">
@@ -90,11 +81,12 @@
                                                     </a></div>
                                                 <div class="col">
                                                     <form action="{{ route('areas.destroy', $area) }}" method="POST">
-                                                        @csrf @method('Delete')<input type="submit"
-                                                            class="btn btn-danger w-100" data-toggle="modal"
-                                                            data-target="#exampleModal" value="Delete item"></form>
-
-
+                                                        @csrf
+                                                        @method('Delete')
+                                                        <input type="submit" class="btn btn-danger w-100"
+                                                            data-toggle="modal" data-target="#exampleModal"
+                                                            value="Delete item">
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -104,7 +96,6 @@
                         </div>
                     @endforeach
                 @endif
-                {{-- {{ $areas->links() }} --}}
             </tbody>
         </table>
     </div>

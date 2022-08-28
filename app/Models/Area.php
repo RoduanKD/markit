@@ -17,6 +17,10 @@ class Area extends Model
     protected $fillable = ['city_id', 'name'];
     public $translatable = ['name'];
 
+    protected $casts = [
+        'name' => 'array',
+    ];
+
 
     public function city()
     {
@@ -32,7 +36,6 @@ class Area extends Model
     {
         return $this->hasMany(CoveredArea::class);
     }
-
 
     public function users()
     {

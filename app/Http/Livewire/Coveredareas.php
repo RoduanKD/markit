@@ -68,10 +68,8 @@ class Coveredareas extends Component
         $user=Auth::user();
         $area=$user->areas()->where('id',$areaId)->get();
         if($area->isEmpty()){
-
             Auth::user()->areas()->attach($areaId);
-
-        }else dd('helo');
+        };
     }
 
     public function render()
