@@ -15,7 +15,7 @@ namespace App\Models{
  * App\Models\Area
  *
  * @property int $id
- * @property mixed $name
+ * @property array $name
  * @property int $city_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -23,6 +23,8 @@ namespace App\Models{
  * @property-read \App\Models\City $city
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CoveredArea[] $covered_areas
  * @property-read int|null $covered_areas_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
  * @method static \Illuminate\Database\Eloquent\Builder|Area newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Area newQuery()
  * @method static \Illuminate\Database\Query\Builder|Area onlyTrashed()
@@ -44,7 +46,7 @@ namespace App\Models{
  * App\Models\City
  *
  * @property int $id
- * @property mixed $name
+ * @property array $name
  * @property int $country_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -105,7 +107,7 @@ namespace App\Models{
  * App\Models\Country
  *
  * @property int $id
- * @property mixed $name
+ * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -234,18 +236,18 @@ namespace App\Models{
  * App\Models\Product
  *
  * @property int $id
- * @property array $name
- * @property array $description
+ * @property mixed $name
+ * @property mixed $description
  * @property int $price
  * @property int $quantity
- * @property int|null $currency_id
- * @property int|null $category_id
- * @property int|null $area_id
- * @property int|null $owner_id
+ * @property int $currency_id
+ * @property int $category_id
+ * @property int $area_id
+ * @property int $owner_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \App\Models\Area|null $area
+ * @property-read \App\Models\Area $area
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
@@ -315,6 +317,8 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Area[] $areas
+ * @property-read int|null $areas_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comment
  * @property-read int|null $comment_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DeliveryTask[] $delivery_task

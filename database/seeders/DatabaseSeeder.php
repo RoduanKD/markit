@@ -40,5 +40,11 @@ class DatabaseSeeder extends Seeder
             'area_id' => 1,
             'owner_id' => 1,
         ]);
+
+        $this->call([
+            CountrySeeder::class,
+            CitySeeder::class,
+            AreaSeeder::class,
+        ]);
     }
 }
