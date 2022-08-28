@@ -4,8 +4,8 @@
 @push('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet" @endpush
-    @push('js') <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet" @endpush @endpush
+        @push('js') <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
@@ -18,7 +18,7 @@
             });
         });
     </script> @endpush
-    @section('content') <div class="container-xl">
+        @section('content') <div class="container-xl">
         <!-- Page title -->
         <div class="page-header d-print-none">
             <div class="row align-items-center">
@@ -52,123 +52,123 @@
                   </div>
                 <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
             </div> @endif
-    <form action="{{ route('products.store') }}" method="POST" class="card" autocomplete="off"
-    enctype="multipart/form-data">
-@csrf
-<div class="card-body">
+        <form action="{{ route('products.store') }}" method="POST" class="card" autocomplete="off"
+        enctype="multipart/form-data">
+    @csrf
+    <div class="card-body">
 
-    <div class="mb-3">
-        <label class="form-label required">{{ __('Name ( En )') }}</label>
-        <input type="text" name="name[en]" class="form-control @error('name') is-invalid @enderror"
-            placeholder="{{ __('Name') }}" value="{{ old('name[en]') }}" required>
-    </div>
-    @error('name')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
+        <div class="mb-3">
+            <label class="form-label required">{{ __('Name ( En )') }}</label>
+            <input type="text" name="name[en]" class="form-control @error('name') is-invalid @enderror"
+                placeholder="{{ __('Name') }}" value="{{ old('name[en]', $product->name['en']) }}" required>
+        </div>
+        @error('name')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
 
-    <div class="mb-3">
-        <label class="form-label required">{{ __('Name ( Ar )') }}</label>
-        <input type="text" name="name[ar]" class="form-control @error('name') is-invalid @enderror"
-            placeholder="{{ __('Name') }}" value="{{ old('name[ar]') }}" required>
-    </div>
-    @error('name')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
+        <div class="mb-3">
+            <label class="form-label required">{{ __('Name ( Ar )') }}</label>
+            <input type="text" name="name[ar]" class="form-control @error('name') is-invalid @enderror"
+                placeholder="{{ __('Name') }}" value="{{ old('name[ar]', $product->name['ar']) }}" required>
+        </div>
+        @error('name')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
 
-    <div class="mb-3">
-        <label class="form-label required">{{ __('Price') }}</label>
-        <input type="number" name="price" class="form-control @error('price') is-invalid @enderror"
-            placeholder="{{ __('price') }}" value="{{ old('price', $product->price) }}" required>
-    </div>
-    @error('price')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
+        <div class="mb-3">
+            <label class="form-label required">{{ __('Price') }}</label>
+            <input type="number" name="price" class="form-control @error('price') is-invalid @enderror"
+                placeholder="{{ __('price') }}" value="{{ old('price', $product->price) }}" required>
+        </div>
+        @error('price')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
 
-    <div class="mb-3">
-        <label class="form-label required">{{ __('Quantity') }}</label>
-        <input type="quantity" name="quantity" class="form-control @error('quantity') is-invalid @enderror"
-            placeholder="{{ __('New quantity') }}" value="{{ old('quantity', $product->quantity) }}" required>
-    </div>
-    @error('quantity')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
+        <div class="mb-3">
+            <label class="form-label required">{{ __('Quantity') }}</label>
+            <input type="quantity" name="quantity" class="form-control @error('quantity') is-invalid @enderror"
+                placeholder="{{ __('New quantity') }}" value="{{ old('quantity', $product->quantity) }}" required>
+        </div>
+        @error('quantity')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
 
-    <div class="mb-3">
-                        <label class="form-label required">{{ __('Category') }}</label>
-                        <div class="form-group">
-                        <label>Product category</label>
-                        <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"
-                                    {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
-                                    {{ $category->name }} ({{ $category->capacity }})</option>
-                            @endforeach
-                        </select>
-                        @error('category_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    </div>
-                     @error('categories')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-
-                    <div class="mb-3">
-                        <label class="form-label required">{{ __('Area') }}</label>
-                        <select multiple name="area" class="form-control @error('area') is-invalid @enderror">
-                              @foreach ($areas as $area)
-                                <option value={{ $area->id }}>{{ $area->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                     @error('areas')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-
-    <div class="mb-3">
-        @foreach ($product->getMedia() as $media)
-            <div class="col-md-3">
-                <img src="{{ $media->getUrl() }}" alt="" width="100%">
-                <form action="{{ route('media.destroy', $media) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
+        <div class="mb-3">
+            <label class="form-label required">{{ __('Category') }}</label>
+            <div class="form-group">
+                <label>Product category</label>
+                <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}"
+                            {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }} ({{ $category->capacity }})</option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
-        @endforeach
-    </div>
+        </div>
+        @error('categories')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
 
-    <div class="mb-3">
-        <label class="form-label required">{{ __('Description ( En )') }}</label>
-        <textarea class="form-control @error('description') is-invalid @enderror" name="description[en]" id="description"
-            rows="5">{{ old('description[en]') }}</textarea>
+        <div class="mb-3">
+            <label class="form-label required">{{ __('Area') }}</label>
+            <select multiple name="area" class="form-control @error('area') is-invalid @enderror">
+                @foreach ($areas as $area)
+                    <option value={{ $area->id }}>{{ $area->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        @error('areas')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+
+        <div class="mb-3">
+            @foreach ($product->getMedia() as $media)
+                <div class="col-md-3">
+                    <img src="{{ $media->getUrl() }}" alt="" width="100%">
+                    <form action="{{ route('media.destroy', $media) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label required">{{ __('Description ( En )') }}</label>
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description[en]" id="description"
+                rows="5">{{ old('description[en]', $product->description['en']) }}</textarea>
+            @error('description')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
         @error('description')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
-    </div>
-    @error('description')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
 
-    <div class="mb-3">
-        <label class="form-label required">{{ __('Description ( Ar )') }}</label>
-        <textarea class="form-control @error('description') is-invalid @enderror" name="description[ar]" id="description"
-            rows="5">{{ old('description[ar]') }}</textarea>
+        <div class="mb-3">
+            <label class="form-label required">{{ __('Description ( Ar )') }}</label>
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description[ar]" id="description"
+                rows="5">{{ old('description[ar]', $product->description['ar']) }}</textarea>
+            @error('description')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
         @error('description')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
+
     </div>
-    @error('description')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
 
-</div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+    </div>
 
-<div class="card-footer">
-    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-</div>
-
-</form>
-</div>
-</div>
+    </form>
+    </div>
+    </div>
 @endsection

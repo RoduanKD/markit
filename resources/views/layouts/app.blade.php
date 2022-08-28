@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    {{-- <title>@yield('title', 'Mark-It')</title> --}}
+
     @vite('resources/sass/app.scss')
 
     <!-- Custom styles for this Page-->
