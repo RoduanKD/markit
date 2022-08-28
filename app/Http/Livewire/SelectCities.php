@@ -11,33 +11,38 @@ class SelectCities extends Component
     // public $oldcity;
     // public $oldcountry;
     public $city;
+
     public $country;
+
     public $countries;
+
     public $countryId;
+
     public $cityId;
+
     public $cities;
 
-    public function mount($country,$city)
+    public function mount($country, $city)
     {
-        $this->countries= Country::orderBy('name')->get();
-        if($country)
-        $this->countryId=$country;
-        if($city)
-        $this->cityId=$city;
-
-        if ($this->countryId)
-        {
-            $this->cities=City::where('country_id',$this->countryId)->get();
+        $this->countries = Country::orderBy('name')->get();
+        if ($country) {
+            $this->countryId = $country;
         }
-        else $this->cities =[];
+        if ($city) {
+            $this->cityId = $city;
+        }
 
+        if ($this->countryId) {
+            $this->cities = City::where('country_id', $this->countryId)->get();
+        } else {
+            $this->cities = [];
+        }
     }
 
     public function updatedCountryId()
     {
-        if ($this->countryId)
-        {
-        $this->cities=City::where('country_id',$this->countryId)->get();
+        if ($this->countryId) {
+            $this->cities = City::where('country_id', $this->countryId)->get();
         }
     }
 

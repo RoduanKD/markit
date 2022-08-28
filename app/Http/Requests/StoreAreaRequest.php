@@ -24,9 +24,9 @@ class StoreAreaRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'      =>  'string',
-            'name_en'      =>  'string',
-            'city'      =>  'integer|exists:cities,id',
+            'name_ar' => 'string',
+            'name_en' => 'string',
+            'city' => 'integer|exists:cities,id',
         ];
     }
 }

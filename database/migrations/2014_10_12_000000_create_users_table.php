@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
-            // $table->json('username');
+            $table->string('username');
             $table->string('phone');
             $table->boolean('is_male');
             $table->date('birthdate');

@@ -24,8 +24,8 @@ class StoreCountryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'      =>  'string',
-            'name_en'      =>  'string',
+            'name_ar' => 'string',
+            'name_en' => 'string',
         ];
     }
 }
