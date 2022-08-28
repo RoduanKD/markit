@@ -43,3 +43,4 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('media', MediaController::class)->only('destroy');
 });
+Route::get('notifications', [\App\Http\Controllers\UserNotificationsController::class, 'show'])->middleware('auth');
