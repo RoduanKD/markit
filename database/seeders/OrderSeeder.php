@@ -18,19 +18,19 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        Order::create(['id' => '1' ,
+        Order::create([
                      'buyer_id' => '1' ,
                      'seller_id' => '5' ,
                      'product_id' => '1',
                      'payment_method' => '2',
                      'status' => '2',
-                     'quantity' => '2'] ,
-                     ['id' => '2' ,
-                     'buyer_id' => '3' ,
-                     'seller_id' => '2' ,
-                     'product_id' => '2',
-                     'payment_method' => '1',
-                     'status' => '1',
-                     'quantity' => '1']);
+                     'quantity' => '2']);
+        Order::create([
+                        'buyer_id' => '3' ,
+                        'seller_id' => '2' ,
+                        'product_id' => '2',
+                        'payment_method' => '1',
+                        'status' => '1',
+                        'quantity' => '1']);
     }
 }

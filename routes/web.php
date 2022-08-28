@@ -1,15 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-use App\Http\Controllers\OrderController;
-=======
-use App\Http\Controllers\AreaController;
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\CoveredAreaController;
-use App\Http\Controllers\Dashboard\ProductController;
-use Illuminate\Support\Facades\Auth;
->>>>>>> d9d05d89c4d612cd0b2aacfe04e1c12032af33b4
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +36,6 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('media', MediaController::class)->only('destroy');
-});
-Route::prefix('admin')->group(function () {
     Route::get('orders' , [OrderController::class , 'index'])->name('admin.order.index');
     Route::get('orders/{order}' , [OrderController::class , 'show'])->name('admin.order.show');
 });
