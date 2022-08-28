@@ -6,8 +6,8 @@
                     <div class="menu-fullwidth">
                         <div class="logo-wrapper">
                             <div class="logo logo-top">
-                                <a href="index.html"><img src="img/logo1.png" alt="logo image" class="img-fluid"
-                                        height="30" width="110"></a>
+                                <a href="{{ route('userhome') }}"><img src="img/logo1.png" alt="logo image"
+                                        class="img-fluid" height="30" width="110"></a>
                             </div>
                         </div>
                         <div class="menu-container">
@@ -23,7 +23,7 @@
                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                         <ul class="navbar-nav">
                                             <li>
-                                                <a href="index.html">Home</a>
+                                                <a href="{{ route('userhome') }}">Home</a>
 
                                             </li>
                                             <li class="has_dropdown">
@@ -187,10 +187,10 @@
                                                                     </li>
 
                                                                     <li>
-                                                                        <a href="login.html">Login</a>
+                                                                        <a href="{{ route('login') }}">Login</a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="signup.html">Register</a>
+                                                                        <a href="{{ route('register') }}">Register</a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="recover-pass.html">Recovery

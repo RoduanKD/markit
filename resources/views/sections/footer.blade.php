@@ -93,7 +93,7 @@
                                     <a href="#">Support Forum</a>
                                 </li>
                                 <li>
-                                    <a href="href="{{ route('terms&conditions') }}"">Terms & Conditions</a>
+                                    <a href="{{ route('terms&conditions') }}"">Terms & Conditions</a>
                                 </li>
                                 <li>
                                     <a href="#">Support Policy</a>

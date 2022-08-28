@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::view('/userhome', 'welcome')->name('userhome');
 Route::view('/products', 'products.index')->name('products');
 Route::view('/product', 'products.show')->name('showproduct');
+Route::view('/terms&conditions', 'terms&conditions')->name('terms&conditions');
+Route::view('/categories', 'categories')->name('categories');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

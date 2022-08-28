@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="hero__content__title">
-                                <h1>7,685 Premium Templates & Themes</h1>
+                                <h1>Products</h1>
                             </div><!-- end .hero__btn-area-->
                             <div class="search-area">
                                 <div class="row">
