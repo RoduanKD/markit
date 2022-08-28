@@ -9,8 +9,8 @@ class MessageController extends Controller
 {
     public function index()
     {
-        $messages = Message::all();
-
+        $messages = Message::paginate(3);
+        $messages->sortByDesc('id');
         return view('messages.index', compact('messages'));
     }
 
@@ -21,26 +21,14 @@ class MessageController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['name' => 'required|string|min:3|max:255',
-            'email' => 'required|email',
-            'phone' => 'required|starts_with:9639|digits_between:12,12',
-            'content' => 'required|string|min:5',
-        ]);
-        $message = new Message();
-        $message->name = $request->name;
-        $message->email = $request->email;
-        $message->phone = $request->phone;
-        $message->content = $request->content;
-        $message->save();
+        $message= Message::create($request->validated());
 
-        return redirect(route('messages.index'));
+        return redirect()->route('messages.index');
     }
 
     public function destroy(Message $message)
     {
         $message->delete();
-        $message = Message::all();
-
         return redirect(route('messages.index'));
     }
 }
