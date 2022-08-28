@@ -31,7 +31,7 @@
                 <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    {{ 'Mark-It' }}
+                    {{ config('app.name') }}
                 </div>
                     <h2 class="page-title">
                         {{ __('Add Product') }}
