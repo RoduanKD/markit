@@ -32,18 +32,18 @@ class Product extends Model implements HasMedia
 
     public $translatable = ['name','description'];
 
-    public function scopeOfCategory($query, $category)
+    public function scopeCategory($query, $category)
     {
         return $query->where('category_id', $category->id);
     }
 
-    public function scopeOfRate($query, $category)
+    public function scopeRate($query, $category)
     {
         $rate_points = Rate::where('rateable_id',$category->id)->count('rating');
         return $query->where($rate_points, $category->id);
     }
 
-    public function scopeOfRateSort($query, $category)
+    public function scopeRateSort($query, $category)
     {
         $rate_points = Rate::all()->orderbydesc();
         return $rate_points;
