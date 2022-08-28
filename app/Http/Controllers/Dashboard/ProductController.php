@@ -43,21 +43,15 @@ class ProductController extends Controller
      */
     public function store(AddProductRequest $request)
     {
-        $name=['en' => $request->validated('name_en'),'ar' => $request->validated('name_ar')];
-        $product=new Product();
-        $product
-        ->setTranslation('name','en',$request->validated('name_en'))
-        ->setTranslation('name','ar',$request->validated('name_ar'))
-
-        ->setTranslation('description', 'en', 'Description in English')
-        ->setTranslation('description', 'ar', 'Description in Arabic');
-        $product->price = $request->price;
-        $product->currency_id = 1;
-        $product->category_id = 1;
-        //$product->area_id = 1;
-        $product->owner_id = auth()->user()->id;
-
-        $product->save();
+        $product = Product::create([
+            'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],
+            'description' => ['en' => $request->description_en, 'ar' => $request->description_ar],
+            'price' => $request->price,
+            'category_id' => 1,
+            'currency_id' => 1,
+            'currency_id' => 1,
+            'owner_id' => 1,
+        ]);
 
         $product->addAllMediaFromRequest()->each(function ($file){
             $file->toMediaCollection();
@@ -98,9 +92,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        $product = Product::find($id);
         $validated = $request->validate([
             'name'         => 'required|min:3',
             'price'         => 'required|numeric|min:100000',

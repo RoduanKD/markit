@@ -66,8 +66,16 @@
 
 
                     <div class="mb-3">
-                        <label class="form-label required">{{ __('Name') }}</label>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required>
+                        <label class="form-label required">{{ __('Name ( En )') }}</label>
+                        <input type="text" name="name[en]" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" value="{{ old('name[en]') }}" required>
+                    </div>
+                    @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Name ( Ar )') }}</label>
+                        <input type="text" name="name[ar]" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" value="{{ old('name[ar]') }}" required>
                     </div>
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -123,9 +131,21 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label required">{{ __('Description') }}</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
-                            rows="5">{{ old('description') }}</textarea>
+                        <label class="form-label required">{{ __('Description ( En )') }}</label>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description[en]" id="description"
+                            rows="5">{{ old('description[en]') }}</textarea>
+                        @error('description')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    @error('description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+
+                    <div class="mb-3">
+                        <label class="form-label required">{{ __('Description ( Ar )') }}</label>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description[ar]" id="description"
+                            rows="5">{{ old('description[ar]') }}</textarea>
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
