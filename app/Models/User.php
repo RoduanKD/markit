@@ -69,9 +69,14 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function coverd_area()
+    public function covered_areas()
     {
         return $this->hasMany(CoverdArea::class);
+    }
+
+    public function areas()
+    {
+        return $this->belongsToMany(Area::class,'covered_areas','employee_id','area_id');
     }
 
     public function address()
