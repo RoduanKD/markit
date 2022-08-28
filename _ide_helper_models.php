@@ -236,8 +236,8 @@ namespace App\Models{
  * App\Models\Product
  *
  * @property int $id
- * @property mixed $name
- * @property mixed $description
+ * @property array $name
+ * @property array $description
  * @property int $price
  * @property int $quantity
  * @property int $currency_id
@@ -248,17 +248,23 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\Area $area
+ * @property-read mixed $average_rating
+ * @property-read mixed $sum_rating
+ * @property-read mixed $user_average_rating
+ * @property-read mixed $user_sum_rating
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
  * @property-read int|null $orders_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\willvincent\Rateable\Rating[] $ratings
+ * @property-read int|null $ratings_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Product category($category)
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Product ofCategory($category)
- * @method static \Illuminate\Database\Eloquent\Builder|Product ofRate($category)
- * @method static \Illuminate\Database\Eloquent\Builder|Product ofRateSort($category)
  * @method static \Illuminate\Database\Query\Builder|Product onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product rate()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product rateSort($order = 'desc')
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereAreaId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
