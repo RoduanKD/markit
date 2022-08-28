@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('countries',CountryController::class);
     Route::resource('cities',CityController::class);
     Route::resource('areas',AreaController::class);
-    Route::resource('coveredareas',CoveredAreaController::class)->only(['index', 'create']);
+    Route::resource('coveredareas',CoveredAreaController::class)->only(['index', 'create','destroy']);
 
     Route::resource('products', ProductController::class);
     Route::resource('media', MediaController::class)->only('destroy');
