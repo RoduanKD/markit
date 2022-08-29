@@ -10459,6 +10459,7 @@
                     /**
          * Gets the Session.
          *
+         * @throws SessionNotFoundException When session is not set properly
          * @static 
          */ 
         public static function getSession()
@@ -17409,6 +17410,35 @@
         {
                         return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
         }
+         
+    }
+     
+}
+
+    namespace App\Http\Requests { 
+            /**
+     * 
+     *
+     */ 
+        class GeneralSettingsRequest {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class ProfileUpdateRequest {
+         
+    }
+     
+}
+
+    namespace Illuminate\Foundation\Http { 
+            /**
+     * 
+     *
+     */ 
+        class FormRequest {
          
     }
      
