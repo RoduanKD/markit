@@ -11,9 +11,12 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'string', 'max:255', Rule::unique('users')->ignore(Auth::user())],
-            'password' => ['nullable', 'string', 'confirmed', 'min:8'],
+            'firstname'             => 'required|min:3|max:255|string',
+            'lastname'              => 'required|min:3|max:255|string',
+            'email'                 => ['required', 'email', 'string', 'max:255', Rule::unique('users')->ignore(Auth::user())],
+            'phone'                 => 'required|digits_between:10,10',
+            'password'              => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6'
         ];
     }
 
