@@ -15,12 +15,12 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create(['id'=>'1','name'=>'create_post']);
-        Permission::create(['id'=>'2','name'=>'edit_post']);
-        Permission::create(['id'=>'3','name'=>'create_user']);
-        Permission::create(['id'=>'4','name'=>'delete_posts']);
-        Permission::create(['id'=>'5','name'=>'write_comment']);
-        Permission::create(['id'=>'6','name'=>'block_user']);
-        Permission::create(['id'=>'7','name'=>'buy_products']);
+        Permission::create(['name'=>'create_post']);
+        Permission::create(['name'=>'edit_post']);
+        Permission::create(['name'=>'create_user']);
+        Permission::create(['name'=>'delete_posts']);
+        Permission::create(['name'=>'write_comment']);
+        Permission::create(['name'=>'block_user']);
+        Permission::create(['name'=>'buy_products']);
     }
 }
