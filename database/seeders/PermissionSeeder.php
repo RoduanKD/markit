@@ -18,7 +18,6 @@ class PermissionSeeder extends Seeder
         // permissions for super admin
             Permission::create(['name'=>'CRUD_Admins']);
             Permission::create(['name'=>'update_website_settings']);
-
         // permissions for  admin
         Permission::create(['name'=>'read_customers']);
         Permission::create(['name'=>'update_customers']);
@@ -27,7 +26,6 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'CRUD_countries']);
         Permission::create(['name'=>'CRUD_cities']);
         Permission::create(['name'=>'CRUD_areas']);
-
         // permissions for  moderator
         Permission::create(['name'=>'create_posts']);
         Permission::create(['name'=>'edit_posts']);
