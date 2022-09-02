@@ -205,7 +205,7 @@
                                                                     <li class="title">Blog</li>
 
                                                                     <li>
-                                                                        <a href="single-blog.html">posts</a>
+                                                                        <a href="{{ route('posts') }}">posts</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
