@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Translatable\HasTranslations;
+use willvincent\Rateable\Rateable;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, SoftDeletes;
+    use HasFactory, InteractsWithMedia, SoftDeletes, HasTranslations, Rateable;
 
     protected $fillable =
     [
@@ -18,11 +20,35 @@ class Product extends Model implements HasMedia
         'description',
         'price',
         'quantity',
+        'owner_id',
         'category_id',
         'currency_id',
         'area_id',
-        'owner_id',
     ];
+
+    public $translatable = ['name', 'description'];
+
+    public function scopeCategory($query, $category)
+    {
+        return $query->where('category_id', $category->id);
+    }
+
+    public function scopeRate($query)
+    {
+        return $query->whereHas('ratings');
+    }
+
+    public function scopeRateSort($query, $order = 'desc')
+    {
+        return $query->select('products.*')
+        ->selectRaw('avg(rating) as avg_rate')
+        ->leftJoin('ratings', function ($join) {
+            $join->on('products.id', '=', 'ratings.rateable_id')
+                ->where('rateable_type', 'App\Models\Product');
+        })
+        ->orderBy('avg_rate', $order)
+        ->groupBy('products.id');
+    }
 
     public function category()
     {
@@ -48,6 +74,7 @@ class Product extends Model implements HasMedia
     // {
     //     return $this->belongsToMany(Invoice::class);
     // }
+
     public function orders()
     {
         return $this->belongsToMany(Order::class);

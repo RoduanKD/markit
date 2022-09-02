@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->json('name');
             $table->json('description');
-            $table->integer('price');
-            $table->integer('quantity')->default(0);
+            $table->integer('price')->unsigned();
+            $table->integer('quantity')->unsigned()->default(0);
 
             $table->foreignId('currency_id')/*->constrained()*/;
             $table->foreignId('category_id')/*->constrained()*/;
-            $table->foreignId('area_id')->constrained();
+            $table->foreignId('area_id')/*->constrained()*/;
             $table->foreignId('owner_id')->constrained('users');
 
             $table->timestamps();

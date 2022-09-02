@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+extends('layouts.guest')
 
 @section('content')
     <section class="breadcrumb-area">
