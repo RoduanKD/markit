@@ -9,6 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     @vite('resources/sass/app.scss')
+    @livewireStyles
 
     <!-- Custom styles for this Page-->
     @yield('custom_styles')
@@ -117,6 +118,7 @@
     </div>
 
     @vite('resources/js/app.js')
+    @livewireScripts
 
     <!-- Page level custom scripts -->
     @yield('custom_scripts')
