@@ -1,102 +1,77 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('content')
-    <div class="container-xl">
-        <!-- Page title -->
-        <div class="page-header d-print-none">
-            <div class="row align-items-center">
-                <div class="col">
-                    <!-- Page pre-title -->
-                    <div class="page-pretitle">
-                        {{ config('app.name') }}
-                    </div>
-                    <h2 class="page-title">
-                        {{ __('My Products') }}
-                    </h2>
-                    <h3><a href="{{ route('products.create') }}" class="text-primary ">Add more!</a></h3>
-                </div>
-            </div>
+    <section class="hero-area2 hero-area3 bgimage">
+        <div class="bg_image_holder">
+            <img src="img/hero-image01.png" alt="background-image">
         </div>
-    </div>
-
-
-    <div class="row">
-        @foreach ($products as $product)
-            <div class="col-md-2">
-                <div class="card cardhov my-2">
-
-                    {{ $product->getFirstMedia() }}
-
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product['name'] }}</h5>
-                        <a href="{{ route('products.show', $product) }}" class="text-primary"> show more
-                            info
-                        </a>
-                        <div class="row my-2">
-                            <div class="col">
-                                <a class="btn ma-2" href="{{ route('products.edit', $product) }}"
-                                    style="background-color: #161C34; color:white;">
-                                    Edit
-                                </a>
-                            </div>
-                            <div class="col">
-                                <button style="background-color: #F36B2A; color:white;"
-                                        class="btn mb-2" data-toggle="modal"
-                                        data-target="#delete-modal">Delete</button>
-                                        <div class="modal fade" id="delete-modal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">DELETE THIS PRODUCTS
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ARE YOU SURE YOU WANT TO DELETE THIS PRODUCTS!
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <form action="{{ route('products.destroy', $product) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button style="background-color: #F36B2A; color:white;"
-                                                        class="btn mb-2" type="submit" data-toggle="modal"
-                                                        data-target="#exampleModal">
-                                                        Delete
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
+        <div class="hero-content content_above">
+            <div class="content-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="hero__content__title">
+                                <h1>Products</h1>
+                            </div><!-- end .hero__btn-area-->
+                            <div class="search-area">
+                                <div class="row">
+                                    <div class="col-lg-6 offset-lg-3">
+                                        <div class="search_box2">
+                                            <form action="#">
+                                                <input type="text" class="text_field"
+                                                    placeholder="Search your products...">
+                                                <button type="submit" class="search-btn btn--lg btn-primary">Search
+                                                    Now</button>
+                                            </form>
+                                        </div><!-- end .search_box -->
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <!--start .search-area -->
+                        </div><!-- end .col-md-12 -->
                     </div>
                 </div>
+            </div><!-- end .contact_wrapper -->
+        </div><!-- end hero-content -->
+    </section>
+    @include('partials.searchfilter')
+    <section class="product-grid p-bottom-100">
+        <div class="container">
+            <div class="row">
+                <!-- Start .product-list -->
+                <div class="col-md-12 product-list">
+                    <div class="row">
+                        {{-- @foreach ($products as $product) --}}
+                        <div class="col-lg-4 col-md-6">
+                            @include('partials.product')
+                        </div>
+                        {{-- @endforeach --}}
+                    </div>
+                    {{-- start pagination --}}
+                    @include('partials.pagination')
+                </div>
+                <!-- Ends: .product-list -->
             </div>
-        @endforeach
-    </div>
-    <div class="row justify-content-center">
-        {{ $products->withQueryString() }}
-    </div>
-
-
+        </div>
+    </section><!-- ends: .product-grid -->
+    <section class="cta2 bgimage">
+        <div class="bg_image_holder">
+            <img src="/img copy/cta-bg.png" alt="">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cta-content">
+                        <div class="cta-text">
+                            <h2>Ready To Join Our Marketplace!</h2>
+                            <p>Grow your marketing and be happy with your online business</p>
+                        </div>
+                        <div class="cta-btn">
+                            <a href="" class="btn btn--md btn-primary">Join Us Today</a>
+                        </div>
+                    </div>
+                </div><!-- ends: .col-md-12 -->
+            </div>
+        </div>
+    </section><!-- ends: .cta2 -->
 @endsection
-    @push('css')
-        <style>
-            .card:hover {
-                border-radius: 0.75rem;
-                border-color: #161C34;
-                transition-delay: 0.1s
-            }
-            h1 {
-                color: #161C34;
-            }
-        </style>
-    @endpush
