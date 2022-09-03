@@ -314,6 +314,7 @@ namespace App\Models{
  * @property string $firstname
  * @property string $lastname
  * @property string $email
+ * @property string $username
  * @property string $phone
  * @property int $is_male
  * @property string $birthdate
@@ -337,14 +338,14 @@ namespace App\Models{
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $order
  * @property-read int|null $order_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permission
- * @property-read int|null $permission_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $product
  * @property-read int|null $product_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\willvincent\Rateable\Rating[] $ratings
  * @property-read int|null $ratings_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $role
- * @property-read int|null $role_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory(...$parameters)
@@ -352,6 +353,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User role($roleName)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereBirthdate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
@@ -365,6 +367,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  * @method static \Illuminate\Database\Query\Builder|User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  */

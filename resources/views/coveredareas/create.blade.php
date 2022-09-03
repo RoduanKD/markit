@@ -3,7 +3,7 @@
 @section('content')
 <section>
     <div class="container">
-        <h1>Create a country</h1>
+        <h1>Cover areas</h1>
             @livewire('coveredareas',['country'=>'','city'=>''])
 
 
