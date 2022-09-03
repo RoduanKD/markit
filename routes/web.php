@@ -4,8 +4,8 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CoveredAreaController;
+use App\Http\Controllers\Dashboard\MediaController;
 use App\Http\Controllers\Dashboard\ProductController;
-use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,14 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
-    Route::resource('countries', CountryController::class);
-    Route::resource('cities', CityController::class);
-    Route::resource('areas', AreaController::class);
-    Route::resource('coveredareas', CoveredAreaController::class)->only(['index', 'create']);
+    Route::resource('countries',CountryController::class);
+    Route::resource('cities',CityController::class);
+    Route::resource('areas',AreaController::class);
+    Route::resource('coveredareas',CoveredAreaController::class)->only(['index', 'create','destroy']);
 
     Route::resource('products', ProductController::class);
     Route::resource('media', MediaController::class)->only('destroy');
-
-    Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
 });

@@ -15,7 +15,6 @@
         "laraveldaily/larastarters": "dev-add-vite-support-to-bootstrap-themes",
         "livewire/livewire": "^2.10",
         "spatie/laravel-medialibrary": "^10.4",
-        "spatie/laravel-settings": "^2.4",
         "spatie/laravel-translatable": "^6.0",
         "willvincent/laravel-rateable": "^3.0"
     },
