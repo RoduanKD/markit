@@ -15,9 +15,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['id'=>'1','firstname =>mhd','lastname=>dhmsa','email'=>'mhd@mhd.com','username'=>'mhd10','phone'=>'0968462377','is_male'=>'true','birthdate'=>'27/5/2000','password'=>'123456654321']);
-        User::create(['id'=>'2','firstname =>hala','lastname=>sdasdas','email'=>'hala@mhd.com','username'=>'hala','phone'=>'0968462378','is_male'=>'false','birthdate'=>'27/6/2000','password'=>'123456654324']);
-        User::create(['id'=>'3','firstname =>fthi','lastname=>dsfsdf','email'=>'fthi@mhd.com','username'=>'fthi','phone'=>'0968462374','is_male'=>'true','birthdate'=>'27/7/2000','password'=>'123456654322']);
-        User::create(['id'=>'4','firstname =>samira','lastname=>sdfsdf','email'=>'smira@mhd.com','username'=>'smira','phone'=>'0968462375','is_male'=>'false','birthdate'=>'27/8/2000','password'=>'123456654323']);
+        User::create(['firstName' =>'mhd','lastName'=>'dhmsa','email'=>'mhd@mhd.com','userName'=>'mhd10','phoNe'=>'0968462377','is_male'=>true,'birthdate'=>'2000-5-27','password'=>'123456654321']);
+        User::create(['firstName' =>'hala','lastName'=>'sdasdas','email'=>'hala@mhd.com','userName'=>'hala','phoNe'=>'0968462378','is_male'=>false,'birthdate'=>'2000-6-27','password'=>'123456654324']);
+        User::create(['firstName' =>'fthi','lastName'=>'dsfsdf','email'=>'fthi@mhd.com','userName'=>'fthi','phoNe'=>'0968462374','is_male'=>true,'birthdate'=>'2000-7-27','password'=>'123456654322']);
+        User::create(['firstName' =>'samira','lastName'=>'sdfsdf','email'=>'smira@mhd.com','userName'=>'smira','phone'=>'0968462375','is_male'=>false,'birthdate'=>'2000-8-27','password'=>'123456654323']);
     }
 }
