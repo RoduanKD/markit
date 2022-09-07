@@ -33,7 +33,6 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'edit_profile']);
         // permissions for customer
         Permission::create(['name'=>'create_products']);
-        Permission::create(['name'=>'update_products']);
         // permissions for delivery
         Permission::create(['name'=>'read_delivery_tasks']);
         Permission::create(['name'=>'update_delivery_tasks']);
