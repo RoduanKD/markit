@@ -9,6 +9,8 @@ class Support extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'details'];
+
     public function owner()
     {
         return $this->belongsTo(User::class, 'owner_id');
