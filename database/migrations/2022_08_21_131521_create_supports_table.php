@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('details');
             $table->integer('status');
             $table->foreignId('owner_id')->constrained('users');
-            $table->foreignId('employee_id')->constrained('users');
+            $table->foreignId('employee_id')->nullable;
             $table->timestamps();
         });
     }
