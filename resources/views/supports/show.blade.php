@@ -8,9 +8,9 @@
             <div class="card-header">
                 <h3 class="card-title">Title: {{ $support->title }}</h3>
             </div>
-            <div class="card-body">
+            {{-- <div class="card-body">
                 <p class="text-muted">Details: {{ $support->details }}</p>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
