@@ -32,6 +32,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $supports->links() }}
         </div>
     </div>
 @endsection
