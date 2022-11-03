@@ -43,9 +43,9 @@
                         </a>
                     </li>
 
-                    <li class="nav-item @if (request()->routeIs('products.index')) active @endif">
-                        <a class="nav-link" href="{{ route('products.index') }}"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ route('products.index') }}">
+                            {{-- data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false"> --}}
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box"
