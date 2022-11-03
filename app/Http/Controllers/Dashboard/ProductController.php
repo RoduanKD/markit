@@ -25,7 +25,7 @@ class ProductController extends Controller
 
         $products = $query->paginate(3);
 
-        return view('products.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ProductController extends Controller
     {
         $categories = [];
         $areas = Area::all(['id','name']);
-        return view('products.create',compact('categories','areas'));
+        return view('admin.products.create',compact('categories','areas'));
     }
 
     /**
@@ -73,7 +73,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -84,7 +84,7 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        return view('products.edit', compact('product'));
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
