@@ -24,12 +24,21 @@
             </div>
 
             <div class="mb-3">
+                <label class="form-label">{{ __('User Name') }}</label>
+                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="{{ __('User Name') }}">
+                @error('username')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label">{{ __('Phone_Number') }}</label>
                 <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="{{ __('Phone') }}">
                 @error('phone')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Email address') }}</label>
@@ -49,9 +58,9 @@
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Gender :') }}</label>
-                <input type="radio" name="gender" value="1" class="form-check-input @error('gender') is-invalid @enderror">
+                <input type="radio" name="is_male" value="1" class="form-check-input @error('gender') is-invalid @enderror">
                 <label class="form-label">{{ __('Male') }}</label>
-                <input type="radio" name="gender" value="0" class="form-check-input @error('gender') is-invalid @enderror">
+                <input type="radio" name="is_male" value="0" class="form-check-input @error('gender') is-invalid @enderror">
                 <label class="form-label">{{ __('Female') }}</label>
                 @error('gender')
                 <div class="invalid-feedback">{{ $message }}</div>

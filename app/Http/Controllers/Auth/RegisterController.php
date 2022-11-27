@@ -8,6 +8,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Validation\Validator as validate;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class RegisterController extends Controller
 {
@@ -49,16 +52,29 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator = Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'is_male' => ['boolean'],
             'birthdate' => ['required', 'date'],
             // 'default_address_id' => ['required', 'bigint', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        return $validator;
+    }
+
+    protected function failedValidation(validate $validator)
+    {
+        dd('in validator');
+        throw new HttpResponseException(
+            response()->json([
+                'success' => false,
+                'message' => $validator->errors()->first(),
+            ], 400)
+        );
     }
 
     /**
@@ -69,14 +85,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'is_male' => $data['gender'],
+            'is_male' => $data['is_male'],
             'birthdate' => $data['birthdate'],
             'password' => Hash::make($data['password']),
         ]);
+        return $user;
     }
 }

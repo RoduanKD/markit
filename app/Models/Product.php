@@ -28,9 +28,9 @@ class Product extends Model implements HasMedia
 
     public $translatable = ['name', 'description'];
 
-    public function scopeCategory($query, $category)
+    public function scopeCategorySort($query, $category)
     {
-        return $query->where('category_id', $category->id);
+        return $query->sortBy('category_id');
     }
 
     public function scopeRate($query)
@@ -69,11 +69,6 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsTo(Owner::class);
     }
-
-    // public function Invoices()
-    // {
-    //     return $this->belongsToMany(Invoice::class);
-    // }
 
     public function orders()
     {
